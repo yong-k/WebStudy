@@ -1,4 +1,0 @@
-127.0.0.1 - - [04/Jun/2022:17:45:50 +0900] "GET / HTTP/1.1" 404 750
-0:0:0:0:0:0:0:1 - - [04/Jun/2022:17:46:03 +0900] "GET /BootstrapApp/BootEx03.html HTTP/1.1" 200 5612
-0:0:0:0:0:0:0:1 - - [04/Jun/2022:17:46:03 +0900] "GET /BootstrapApp/css/bootstrap.css HTTP/1.1" 200 141414
-0:0:0:0:0:0:0:1 - - [04/Jun/2022:17:46:03 +0900] "GET /BootstrapApp/js/bootstrap.min.js HTTP/1.1" 200 35452

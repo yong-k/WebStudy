@@ -1,9 +1,0 @@
-127.0.0.1 - - [17/May/2022:23:49:08 +0900] "GET / HTTP/1.1" 404 750
-0:0:0:0:0:0:0:1 - - [17/May/2022:23:49:08 +0900] "GET /WebApp99_practice/practice/02_webPublishing_codeit/01_travelSite/home_js.html HTTP/1.1" 200 508
-0:0:0:0:0:0:0:1 - - [17/May/2022:23:49:08 +0900] "GET /WebApp99_practice/practice/02_webPublishing_codeit/01_travelSite/styles.css HTTP/1.1" 200 532
-0:0:0:0:0:0:0:1 - - [17/May/2022:23:49:08 +0900] "GET /WebApp99_practice/practice/02_webPublishing_codeit/01_travelSite/images/logo.png HTTP/1.1" 200 7897
-0:0:0:0:0:0:0:1 - - [17/May/2022:23:49:08 +0900] "GET /WebApp99_practice/practice/02_webPublishing_codeit/01_travelSite/images/home.png HTTP/1.1" 200 6937282
-0:0:0:0:0:0:0:1 - - [17/May/2022:23:49:09 +0900] "GET /favicon.ico HTTP/1.1" 404 761
-0:0:0:0:0:0:0:1 - - [17/May/2022:23:58:53 +0900] "GET /WebApp99_practice/practice/02_webPublishing_codeit/01_travelSite/home_js.html HTTP/1.1" 200 638
-0:0:0:0:0:0:0:1 - - [17/May/2022:23:58:56 +0900] "GET /WebApp99_practice/practice/02_webPublishing_codeit/01_travelSite/images/seoul.png HTTP/1.1" 200 8828401
-0:0:0:0:0:0:0:1 - - [17/May/2022:23:59:25 +0900] "GET /WebApp99_practice/practice/02_webPublishing_codeit/01_travelSite/home_js.html HTTP/1.1" 200 650

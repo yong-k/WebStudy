@@ -1,6 +1,0 @@
-127.0.0.1 - - [26/Jun/2022:02:57:00 +0900] "GET / HTTP/1.1" 404 750
-0:0:0:0:0:0:0:1 - - [26/Jun/2022:02:57:01 +0900] "GET /WebApp99_practice/AjaxTest01.html HTTP/1.1" 200 215
-0:0:0:0:0:0:0:1 - - [26/Jun/2022:02:57:04 +0900] "GET /favicon.ico HTTP/1.1" 404 761
-0:0:0:0:0:0:0:1 - - [26/Jun/2022:02:57:31 +0900] "GET /WebApp99_practice/AjaxTest01.html HTTP/1.1" 200 238
-0:0:0:0:0:0:0:1 - - [26/Jun/2022:02:59:21 +0900] "GET /WebApp99_practice/AjaxTest01.html HTTP/1.1" 200 226
-0:0:0:0:0:0:0:1 - - [26/Jun/2022:03:01:13 +0900] "GET /WebApp99_practice/AjaxTest01.html HTTP/1.1" 200 273
