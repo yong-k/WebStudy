@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HelloSend02.html</title>
+</head>
+<body>
+
+<div>
+	<h1>최초 요청 페이지</h1>
+	<h2>HelloSend02.html</h2>
+	<hr />
+</div>
+
+<div>
+	<!-- WebApp25와 달라진 점 -->
+	<!-- form의 action 속성에 서블릿 주소 요청 -->
+	<!-- 서블릿주소 요청할 때는, 그냥 소문자로 한다.(사용자편의위해) --> 
+	 <!-- 그러기 위해서 web.xml에서 얘를 등록해주는 작업이 필요하다 -->
+	<form action="helloreceive02" method="post">
+		First Name <input type="text" name="firstName" /><br />
+		Last Name <input type="text" name="lastName" /><br />
+		<button type="submit">submit</button>
+	</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test038.html</title>
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+	th { text-align: left; }
+</style>
+
+<script type="text/javascript">
+	
+	// 자바스크립트 배열 객체 구성 
+	var boardArray = new Array();
+	
+	// 사용자 정의 객체 구성(→ 생성자 함수 정의)
+	function Board(uName, uContent)
+	{
+		this.userName = uName;
+		this.content = uContent;
+		// writeDay 는 Date 객체로 구성하겠다.
+		this.writeDay = new Date();
+	}
+	
+	// check~!!!
+	// 프로토타입 구성을 통해... 사용자 정의 객체의 함수(기능, 동작) 정의
+	//-- 자바스크립트로 만든 객체라면, 무조건! 숨겨진 속성으로 
+	//   『객체이름.prototype』 이 있다. → chaining 하는거랑 같은 의미
+	//Board.prototype.userLocalString = function() {   };  형식으로 정의
+	Board.prototype.userLocalString = function()
+	{
+		// 꼭 (this.writeDay.getMonth()+1) 괄호 친 다음에 +1 해주기
+		// 아니면 문자열 결합 되어버림!!
+		return this.writeDay.getFullYear() + "-" 
+				+ (this.writeDay.getMonth()+1) + "-"
+				+ this.writeDay.getDate() + " "
+				+ this.writeDay.getHours() + ":"
+				+ this.writeDay.getMinutes() + ":"
+				+ this.writeDay.getSeconds();
+		
+		// ※ 연/월/일은 s 안붙는데, 시/분/초는 s 붙음!!
+		// 시 → getHours()
+		// 분 → getMinutes()
+		// 초 → getSeconds()
+	};
+	
+	// ↑ 전역변수 형식으로 만들어놓은거 
+	// ↑ 아직 함수 정의한 거 없다.
+	
+	
+	// 함수 정의
+	// 글쓰기 버튼이 클릭되었을 때 호출되어 기능하는 함수
+	// → 클라이언트가 입력한 작성자, 내용 받아와야 한다.
+	function protoTest()
+	{
+		// 확인
+		//alert("함수 호출 확인~!!!");
+		
+		var uName = document.getElementById("uName").value;
+		var uContent = document.getElementById("uContent").value;
+		
+		// 글쓰기 버튼 눌러도 내용 저장되게 하려면 → 자바스크립트 배열 활용
+		var len = boardArray.length;
+		
+		// 확인
+		//alert(len);
+		//-- 현재 시점에서 테스트 시 → 0
+		
+		boardArray[len] = new Board(uName, uContent);
+		// 				  --------------------------
+		//                └→ 자바스크립트 사용자정의 객체 생성 구문
+		//-- 이거 하고 나면 글쓰기 버튼 누를 때마다 Board 객체 생성해서 하나씩 담는다.
+		//   → boardArray 의 length 는 1씩 늘어난다. 
+		
+		//확인
+		//alert(len);
+		//-- 작성이 이루어질 때 마다... → +1 
+		
+		// 내용 출력 → 밖으로 빼서 함수로 정의하고 오자.
+		// 내용 출력 함수 호출
+		print(len);
+	}
+	
+	// 내용 출력 함수 정의
+	// 몇 번째꺼를 출력할 지는 매개변수로 넘겨받는다.
+	function print(index)
+	{
+		// 확인
+		//var strTemp = boardArray[index].content;
+		//alert(strTemp);
+		
+		var tableNode = document.getElementById("bbsTable");
+		var trNode = document.createElement("tr");
+		
+		trNode.appendChild(createTdNode((index+1).toString()));					// 번호
+		trNode.appendChild(createTdNode(boardArray[index].userName));			// 이름
+		trNode.appendChild(createTdNode(boardArray[index].content));			// 내용	
+		trNode.appendChild(createTdNode(boardArray[index].userLocalString()));	// 작성일
+		
+		tableNode.appendChild(trNode);
+	}
+	
+	// td 노드 생성 및 반환 함수 정의
+	function createTdNode(val)
+	{
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");
+		tdNode.appendChild(textNode);
+		return tdNode;
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>자바스크립트 객체(사용자 정의 객체)</h2>
+	
+	<div>
+		<form>
+			<!-- 입력 폼을 구성하는 레이아웃 테이블 → 나중에 div 로 꼭 구성해보기!! -->
+			<table class="table">
+				<tr>
+					<th>작성자</th>
+					<td>
+						<input type="text" id="uName" style="width: 150px;">
+					</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td>
+						<input type="text" id="uContent" style="width: 600px;">
+					</td>
+				</tr>
+			</table>
+			<br>
+			
+			<input type="button" value="글쓰기" class="btn" style="width: 680px; height: 40px; font-size: 18pt;"
+			onclick="protoTest()">
+			<br><br>
+			
+			<!-- 내용을 리스트 형식으로 볼 수 있도록 구성하는 레이아웃 테이블 -->
+			<table class="table" border="1" id="bbsTable">
+				<tr>
+					<th style="width: 40px;">번호</th>
+					<th style="width: 90px;">작성자</th>
+					<th style="width: 400px;">내용</th>
+					<th>작성일</th>
+				</tr>
+			</table>		
+		</form>
+	</div>
+</div>
+
+</body>
+</html>

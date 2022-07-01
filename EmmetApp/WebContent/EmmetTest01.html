@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EmmetTest01.html</title>
+</head>
+<body>
+<!-- 
+	! 쓰고 ctrl+e 누르면 html 기본 템플릿 만들어진다. 
+	div 쓰고 tab 누르면 생김
+-->
+
+<div>
+ 	<h1>※ 기능 적용 액션 키 → Ctrl + E</h1>
+</div>
+
+div#box{kkk}
+<div id="box">kkk</div>
+
+#box
+<div id="box"></div>
+
+.items{bbb}
+<div class="items">bbb</div>
+
+div#box.items
+<div id="box" class="items"></div>
+
+#box.items.unit.control
+<div id="box" class="items unit control"></div>
+
+-속성값
+div[title]
+<div title=""></div>
+
+-PCDATA
+div{박스}
+<div>박스</div>
+
+a{홈페이지로}
+<a href="">홈페이지로</a>
+
+-반복 생성
+img[src=images/dog.jpg]*5
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+
+img[src=images/obj$.jpg]*3
+<img src="images/obj1.jpg" alt="" />
+<img src="images/obj2.jpg" alt="" />
+<img src="images/obj3.jpg" alt="" />
+
+h${제목$}*6
+<h1>제목1</h1>
+<h2>제목2</h2>
+<h3>제목3</h3>
+<h4>제목4</h4>
+<h5>제목5</h5>
+<h6>제목6</h6>
+
+h1{제목}+p{내용}*3
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+
+- 하위 생성
+table+
+<table>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+
+ul+
+<ul>
+	<li></li>
+</ul>
+
+select+
+<select name="" id="">
+	<option value=""></option>
+</select>
+
+
+-자식 생성
+table#tbl>tr*2>td*3
+<table id="tbl">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+table#tbl>tr*3>td#label$+td.content
+<table id="tbl">
+	<tr>
+		<td id="label1"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td id="label2"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td id="label3"></td>
+		<td class="content"></td>
+	</tr>
+</table>
+
+table#tbl>(tr>th*3)+((tr>td*3)*5)
+<table id="tbl">
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+
+- 더미 키워드 : lorem → 만들어질 때마다 내용 쫌 다름
+			  : 뒤에 숫자 넣어서 몇 자 만들지도 할 수 있음 → lorem100
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolorem doloribus esse expedita iure quisquam adipisci deserunt optio ratione deleniti quam sunt. Quia cum mollitia laborum obcaecati possimus aperiam laboriosam!
+
+※ 주의할 점 
+단독으로 할 때는 괜찮은데 엘리먼트 안에 넣어서 생성하려고 하면 그냥 쓰면 안됨
+함수처럼 lorem(td{desc}) 하고 사용해야 한다.
+				 ------
+				 describe
+
+table>(tr>th*2)+(tr>(td{word}+td{lorem}))*3
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>lorem</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>lorem</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>lorem</td>
+	</tr>
+</table>
+
+table>(tr>th*2)+(tr>(td{word}+lorem(td{desc})))*3
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem similique minima nihil cum corrupti tempora id aspernatur libero placeat incidunt amet ab tenetur quod accusamus aperiam dignissimos quam corporis sit.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Illo in saepe eligendi. Explicabo voluptates ullam veniam deleniti itaque et iure! Enim voluptatem architecto nobis asperiores odit suscipit temporibus possimus commodi reiciendis deserunt expedita alias deleniti ipsum nemo aut.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Illo facilis quia at quasi similique fugit iste sit eum earum officiis voluptatem quis odio. Vel fuga veniam ab earum dolore nostrum obcaecati dolor beatae accusantium nemo maxime culpa doloremque.</td>
+	</tr>
+</table>
+	
+
+
+
+<!-- http://ludenscode.com/2021/10/09/emmet-%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%A0%95%EB%A6%AC/ -->
+
+div>ul>li*5
+<div>
+	<ul>
+		<li></li>
+	</ul>
+</div>
+
+div>p+span
+<div>
+	<p></p>
+	<span></span>
+</div>
+
+div+div>p>span+em^span
+<div></div>
+<div>
+	<p><span></span><em></em></p>
+	<span></span>
+</div>
+
+div>p>ul>li*2^^span
+<div>
+	<p>
+		<ul>
+			<li></li>
+			<li></li>
+		</ul>
+	</p>
+	<span></span>
+</div>
+
+div>div>p>ul>li*2^^^^span
+<div>
+	<div>
+		<p>
+			<ul>
+				<li></li>
+				<li></li>
+			</ul>
+		</p>
+	</div>
+</div>
+<span></span>
+
+div>(p>ul>li*3)*2
+<div>
+	<p>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</p>
+	<p>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</p>
+</div>	
+
+td[title colspan]
+<td title="" colspan=""></td>
+
+td[title="hi" colspan=2]{처음코딩, LudensCode}
+<td title="hi" colspan="2">처음코딩, LudensCode</td>
+
+a{Click Me}
+<a href="">Click Me</a>
+
+a:link
+<a href="http://"></a>
+
+a[href="www.naver.com"]{naver}
+<a href="www.naver.com">naver</a>
+
+div#header+div.nav+div#footer.luco
+<div id="header"></div>
+<div class="nav"></div>
+<div id="footer" class="luco"></div>		
+
+
+$ → 숫자 순서대로
+ul>li.item$*12
+<ul>
+	<li class="item1"></li>
+	<li class="item2"></li>
+	<li class="item3"></li>
+	<li class="item4"></li>
+	<li class="item5"></li>
+	<li class="item6"></li>
+	<li class="item7"></li>
+	<li class="item8"></li>
+	<li class="item9"></li>
+	<li class="item10"></li>
+	<li class="item11"></li>
+	<li class="item12"></li>
+</ul>
+
+ul.myitem>li#item$$*12
+<ul class="myitem">
+	<li id="item01"></li>
+	<li id="item02"></li>
+	<li id="item03"></li>
+	<li id="item04"></li>
+	<li id="item05"></li>
+	<li id="item06"></li>
+	<li id="item07"></li>
+	<li id="item08"></li>
+	<li id="item09"></li>
+	<li id="item10"></li>
+	<li id="item11"></li>
+	<li id="item12"></li>
+</ul>
+
+$@ 숫자 거꾸로 『-10』 마지막숫자인 듯?
+.container>ul.list>li#list-item$*5>a{list$@-10}
+<div class="container">
+	<ul class="list">
+		<li id="list-item1"><a href="">list14</a></li>
+		<li id="list-item2"><a href="">list13</a></li>
+		<li id="list-item3"><a href="">list12</a></li>
+		<li id="list-item4"><a href="">list11</a></li>
+		<li id="list-item5"><a href="">list10</a></li>
+	</ul>
+</div>
+
+.container>ul.list>(li#list-item$>a[href="www.yong/item$"]{chap $$@-1})*3
+<div class="container">
+	<ul class="list">
+		<li id="list-item1"><a href="www.yong/item1">chap 03</a></li>
+		<li id="list-item2"><a href="www.yong/item2">chap 02</a></li>
+		<li id="list-item3"><a href="www.yong/item3">chap 01</a></li>
+	</ul>
+</div>		
+
+$@ 할 때 끝 값이 『-1』이면 1 생략하고 『-』만 적어도 된다. 
+ul>li.item$@-1*5	
+ul>li.itme$@-*5
+<ul>
+	<li class="itme5"></li>
+	<li class="itme4"></li>
+	<li class="itme3"></li>
+	<li class="itme2"></li>
+	<li class="itme1"></li>
+</ul>
+
+li.generic-item>lorem6.item*3
+<li class="generic-item">
+	<div class="item">Lorem ipsum dolor sit amet, consectetur.</div>
+	<div class="item">Omnis pariatur delectus! Perspiciatis fuga consequuntur.</div>
+	<div class="item">Deleniti temporibus nihil itaque similique aperiam!</div>
+</li>
+
+anyThing
+<anything></anything>
+
+table>tr>th*3^(tr>td*3)*2
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+
+</body>
+</html>

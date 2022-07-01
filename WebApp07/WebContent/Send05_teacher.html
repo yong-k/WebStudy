@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send05.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+</style>
+<script type="text/javascript">
+	function formChange(obj)
+	{
+		// 확인
+		//alert(obj);
+		//--==>> [object HTMLFormElement]
+		
+		// ※ obj 변수(이 함수의 매개변수)에는 form 객체가 저장되어 있다.
+		//    필요에 따라 전송하기 전에 검증 절차를 추가하는 것이 가능하다.
+		
+		// 우리는 지금 selectBox 이기 때문에 다른 검증할 필요는 없으니
+		obj.submit();
+		//-- 『form.submit();』
+		//   form 객체에 submit 버튼을 누른거랑 똑같다. 
+		//-- 함수 호출을 통해 form 객체의 데이터를 서버로 전송하는 것이 가능하다.
+	}
+</script>
+</head>
+<body>
+
+<!--  
+	○ 데이터 송수신 실습 05
+	   - 구구단 결과를 출력하는 JSP 페이지(Receive05.jsp)를 구성한다.
+	   - 원하는 단수를 입력받아 화면에 출력해주는 형태의 페이지로 구현한다.
+	   - 단, submit 버튼 없이 이벤트 처리를 할 수 있도록 한다.
+	   
+	   단 수 선택 [  1단  ▼ ]	→ select
+	   				 2단
+	   				 3단
+	   				  :
+	   				 9단
+	   				 
+	   - select 선택 시
+	     해당 단의 구구단 내용을 출력하는 JSP(Receive05.jsp)로 
+	     데이터를 전달하여 내용을 구성할 수 있도록 한다.
+	      
+	   - 사용자의 최초 요청 주소는
+		 http://localhost:8090/WebApp07/Send05.html 로 한다.
+	   
+	○ Send05.html
+	   Receive05.jsp	       
+-->
+
+<div>
+	<h1>데이터 송수신 실습 05</h1>
+	<hr>
+</div>
+
+<div>
+	<!-- get 방식으로 넘기는 거라 selectbox로 선택안하고 
+		 그냥 주소에서 값 바꿔줘도 해당 구구단 출력된다.
+		 http://localhost:8090/WebApp07/Receive05_teacher.jsp?dan=5
+		 http://localhost:8090/WebApp07/Receive05_teacher.jsp?dan=2
+		 http://localhost:8090/WebApp07/Receive05_teacher.jsp?dan=8
+		 이런식으로 ! ㅎvㅎ -->
+	<form action="Receive05_teacher.jsp" method="get">
+		단 수 선택
+		<!-- 1단으로 기본으로 되어있는데, 1단선택하면 change 이벤트 발생하지 않는다..
+			 그래서 실무적으로는 '--선택--'이런거 하나 넣어놓음 -->
+		<!-- 여기서 『this』 까지하면, select 요소
+		     『this.form』 하면 select 요소가 포함되어 있는 form Object가 된다. -->
+		<select id="dan" name="dan" onchange="formChange(this.form)">
+			<option>---- 선택하세요 ----</option>		
+			<option value="1">1단</option>
+			<option value="2">2단</option>
+			<option value="3">3단</option>
+			<option value="4">4단</option>
+			<option value="5">5단</option>
+			<option value="6">6단</option>
+			<option value="7">7단</option>
+			<option value="8">8단</option>
+			<option value="9">9단</option>
+		</select>
+	</form>
+</div>
+
+</body>
+</html>

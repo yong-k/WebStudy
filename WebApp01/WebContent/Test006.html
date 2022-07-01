@@ -1,0 +1,116 @@
+<!-- Test005.html 에서 한 거에 script 넣어보자 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test006.html</title>
+<style type="text/css">
+	/* 스타일 주석 */
+	/* 『*』 : 모든걸 의미함 */
+	*
+	{
+		font-size: 20pt;
+		font-weight: bold;
+		font-family: 맑은 고딕;
+		color: #3d6a99;
+		background-size: cover;
+	}
+</style>
+</head>
+
+<script type="text/javascript">
+	// 스크립트 영역과 다른 영역은 다른 거!
+	// 여기 있는 애가 다른데서 보이고 그런 형태 아니다.
+	
+	// 자바스크립트 함수는 리턴자료형 명시하지 않는다.
+	// 그렇다고 리턴자료형 없는 거 아님
+	function actionPerformed()
+	{
+		
+		// 자바 주석처리랑 똑같음
+		//alert("함수 호출 확인~!!!");
+		
+		// 변수 선언하는 구문
+		// 그냥 『var』키워드로 변수 선언하고, 안에 뭐가 담겼느냐에 따라 자료형 바뀜
+		// 정수 담으면 정수타입 변수, 문자 담으면 문자타입 변수....가 된다.
+		// 편하다고 생각할 지 모르지만, 그래서 불편함
+		// 집어넣을 때는 쉬운데, 꺼내쓸 때가 문제....
+		// 자바는 a라는 변수에서 꺼내서 쓸 때, 선언부로 가서 그게 무슨 type 인지 보면
+		// 그 안에 뭐가 있을 지 추측/예측 가능하다.
+		// 그래서 그 데이터 type 으로 처리해서 쓸 수 있지만....
+		// 자바스크립트는 그릇을 열었을 때 그 안에서 뭐가 튀어나올지 모름......
+		// 자바스크립트는 데이터 가져다 쓸 때 매우 번거롭고 귀찮고 힘들다.....ㅠ.ㅠ
+		var vKor = document.getElementById("kor").value;
+		var vEng = document.getElementById("eng").value;
+		var vMat = document.getElementById("mat").value;
+		//-- vKor, vEng, vMat → 문자열 타입
+		// 『document』키워드는 Test006.html 이 문서를 말함
+		// 그 문서를 얻어낸거
+		// document: 브라우저로부터 얻어낸 document 객체다.
+		// getElementById() : 앞에 있는 document[문서, 여기서는 Test006.html]의 요소를 얻어낼건데,
+		//					  ByID : ID로 얻어낼거야.
+		// 『document.getElementById("kor")』 : 여기까지가 객체
+		// 『document.getElementById("kor")』.value : 그 객체로부터 값 속성을 얻어내겠다.
+		// ex) 국어 : 80 입력했을 때, 『80』 이 value
+		//    『document.getElementById("kor").value』 → 의미하는 게 80
+		// 이 때, 가져오는 80은 → 숫자가 아닌 text(문자열)로 가져온다. "80"
+		// 
+		
+		// BOM(Browser Object Model) vs DOM(Document Object Model,문서객체모델,문객체모델)
+		// 문서를 구성하는 건 텍스트다. 텍스트를 텍스트로만 보면 그 문서를 제어할 수 없다.
+		// 그 문서를 가지고 어떤 동작을 할 수도 없게 된다.
+		// 문서의 기본 요소인 텍스트를 객체 형식으로 읽어들일 필요가 생김
+		// 그걸 읽는 건 브라우저에 의해 읽히기 때문에, 브라우저에서 객체로 인식하는 과정을
+		// BOM이라고 한다.
+		// 그걸 문서단위로 기능하고 행동하게 만들어야 하기 때문에 DOM 통해서 문서단위로 뽑아낸다.
+		// 자바스크립트 DOM 에서부터 시작하고, 매우매우 중요한 개념이다.
+		var vTot = 0;
+		var vAvg = 0;
+		//-- vTot, vAvg → 정수 타입 
+		
+		vTot = parseInt(vKor) + parseInt(vEng) + parseInt(vMat);
+		// parseInt() 하지않고 그냥 + 수행하면 "90"+"80"+"70" = "908070" 으로 된다.
+		vAvg = Math.round(vTot/3);
+		//-- 『Math』 는 객체타입. 자바스크립트에는 클래스 개념 없다.
+		
+		document.getElementById("tot").value = vTot;
+		document.getElementById("avg").value = vAvg;
+	}
+</script>
+
+
+<body background="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201705/22/de6a8f6e-f239-4594-b3bb-6545c76619c6.gif" leftmargin="100" topmargin="100">
+
+<div>
+	<h1>데이터 입력 관련 태그</h1>
+	<hr>
+</div>
+
+<div>
+	<!-- check~!!! -->
+	<form>
+		이름 <input type="text" id="name"><br>
+		국어 <input type="text" id="kor"><br>
+	 	영어 <input type="text" id="eng"><br>
+		수학 <input type="text" id="mat"><br>
+		<br>
+	
+		<!-- 결과 버튼에 클릭 이벤트가 발생했을 때 『actionPerformed』 자바스크립트 함수 호출
+		기능상으로 행동하게 해주는 모든게 → 이벤트
+		모든 이벤트 핸들러들은 앞에 『on』이 붙어있다.
+		onclick 이라는 이벤트가 아니라, click 이벤트에 on 이 붙은거다. -->
+		<input type="button" value="결과" onclick="actionPerformed()">
+		<input type="reset" value="취소">
+			<!-- input type="reset"은 type="button"과 생긴건 똑같지만
+			우리가 따로 스크립트로 안해도 초기화되는 액션처리를 해준다. 
+			<form></form> 안에 있는 모든게 reset 된다. --> 
+		<br>
+		
+		총점 <input type="text" id="tot"> 평균 <input type="text" id="avg"><br>
+	
+	</form>
+</div>
+
+</body>
+</html>

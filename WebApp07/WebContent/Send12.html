@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send12.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+<div>
+	<h1>데이터 송수신 실습 12</h1>
+	<hr>
+</div>
+
+<!-- ■■■ 포워딩 / 리다이렉트 관련 중요한 실습 ■■■ -->
+
+<!-- 
+		① 사용자 최초 요청 페이지
+		사칙연산 수행을 위한 정수 입력 페이지를 구성
+		연산자를 함께 입력받을 수 있도록 처리 
+		정수1 / 정수2 / 연산자
+		http://localhost:8090/WebApp07/Send12.html
+				
+		② 연산 전용 페이지
+		response.sendRedirect()를 포함한 스크립트릿 코드만 존재
+					----------
+					- 클라이언트한테 java.sun.com 주세요 했을 때,
+					  '야 oracle.com 으로 다시 접속해!' 라고 응답하는 걸로 끝난다.
+					- 클라이언트 최초 요청에 응답하는데,
+					  send → 보내는건데, redirect 할 수 있도록 응답하는거!!
+					- 어디로 가라고 클라이언트에게 안내해줄 뿐이지
+					  클라이언트가 이 페이지에 남아서 view 를 볼 일이 없음
+					  클라이언트는 이 페이지가 건네준 주소값으로 이동한다. 
+		→ 추후 이 코드를 java 로 분리하여 → Servlet 으로 구성할 예정
+		http://localhost8090/WebApp07/Redirect12.jsp
+				
+		③ 최종 결과 출력 페이지
+		연산 전용 페이지에서 처리한 결과를 넘겨받아 클라이언트와 대면할 페이지로 구성
+		→ 추후 이 페이지는 jsp view 페이지의 역할을 수행할 예정
+		http://localhost8090/WebApp07/Receive12.jsp	 
+ -->
+ 
+ <div>
+ 	<!-- Redirect 처리 페이지로 요청 -->
+    <!-- 여기에 method="post"는 Redirect12.jsp 에 값 넘겨주는거라
+ 	          ↓  여기의 post, get 은 Redirect에서 
+ 	          ↓   response.sendRedirect에서 get방식의 주소로 넘긴거랑은 전혀 상관없다!!! -->
+ 	<form action="Redirect12.jsp" method="post">
+ 		정수1 <input type="text" name="num1" class="txt">
+ 		
+ 		<select name="calResult">
+ 			<option selected="selected">연산 선택</option>
+ 			<option value="1">더하기</option>
+ 			<option value="2">빼기</option>
+ 			<option value="3">곱하기</option>
+ 			<option value="4">나누기</option>
+ 		</select>
+ 		
+ 		정수2 <input type="text" name="num2" class="txt">
+ 		
+ 		<button type="submit" class="btn control">확인</button>
+ 	</form>
+ </div>
+ 
+</body>
+</html>

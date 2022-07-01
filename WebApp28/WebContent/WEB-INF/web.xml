@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- web.xml = 배치 기술서 -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+	id="WebApp_ID" version="3.1">
+  <display-name>WebApp00</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 
+  <servlet>
+  	<servlet-name></servlet-name>
+  	<servlet-class></servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name></servlet-name>
+  	<url-pattern></url-pattern>
+  </servlet-mapping>
+  -->
+  
+  <!-- SendController -->
+  <servlet>
+  	<servlet-name>SendController</servlet-name>
+  	<servlet-class>com.test.svt.HelloSend03Controller</servlet-class>
+  </servlet>
+  
+  <!-- 
+	  그냥 사용자가 url 창에 『/hello』라고 입력한 순간 
+	  HelloSend03Controller 객체 생성한다.
+   -->
+  <servlet-mapping>
+  	<servlet-name>SendController</servlet-name>
+  	<url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  
+  <!-- ReceiveController -->
+  <servlet>
+  	<servlet-name>ReceiveController</servlet-name>
+  	<servlet-class>com.test.svt.HelloReceive03Controller</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ReceiveController</servlet-name>
+  	<url-pattern>/helloreceive03</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 여기에 Model 객체를 연계해서 servlet으로 등록할 필요 없다!! -->
+  <!-- 두개의 controller 만 등록해놓으면 된다. -->
+  <!-- 이제 receive view 페이지 만들러 가자 → HelloReceive03.jsp -->
+</web-app>

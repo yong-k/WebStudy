@@ -1,0 +1,73 @@
+
+--○ 오라클 계정 내용 export
+오라클->도구>데이터익스포트
+접속:scott
+형식:insert
+다음마다커밋포함 >> 은 컴터상황 안좋으면 중간에 끊기고 하면 체크하기
+다음>다음>다음>완료
+
+
+--○ 이클립스 preferences export
+file > export > general > preference > export all 체크 > d드라이브 다운로드파일에 12_Web_epf
+WebStandard로 저장> finish
+
+file > export > general > fileSystem > select all  체크 > d드라이브 다운로드파일에 13_Web_Export
+>finish
+
+
+======================================================================================================
+
+- window>preferences
+>web>jsp files>editor>templates
+>new jsp file (html5) > edit
+>아래 구문 추가
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
+
+>ok > apply
+(cp:context path)
+
+======================================================================================================
+
+--○ JSTL 쓰기 위한 설정
+
+http://jakarta.apache.org/   에 접속한 후...
+
+왼편의 메뉴 목록들 중...하단에 [Taglibs] 클릭
+→ https://tomcat.apache.org/taglibs/
+
+왼편의 메뉴 목록들 중...(중간정도) standard 클릭
+→ https://tomcat.apache.org/taglibs/standard/
+
+본문의 내용들 중... 『standard 1.1』 의 download 클릭
+→ http://archive.apache.org/dist/jakarta/taglibs/standard/
+
+페이지 상단의 binaries/   클릭
+→ http://archive.apache.org/dist/jakarta/taglibs/standard/binaries/
+
+
+jakarta-taglibs-standard-1.1.2.zip                2004-10-25 20:57  933K  클릭
+→ 다운로드 대화창 생성
+
+다운로드 완료후 압축 해제 (중첩안되게 잘라내기해서 붙여넣기 작업)
+lib 폴더 안에 들어가면 jstl, standard 2개의 jar 파일있음
+> 복사 > 이클립스 열어서 
+WebApp22 > WEB_INF 디렉터리 노드 확장 > lib 디렉터리 > 붙여넣기
+
+
+
+
+[[이클립스]]
+window> preferences > Web 노드 확장 > JSP Files 노드 확장 
+	> Editor 노드 확장 > Templates 선택
+	> New JSP File (html 5) 선택 > Edit.. 버튼 클릭
+	> page contentType 아래에 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+한줄 추가해주기!!
+>ok>apply and close
+		
+
+
+

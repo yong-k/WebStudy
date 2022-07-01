@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test013.html</title>
+
+<script type="text/javascript">
+
+	/* 이벤트 등록 방법 ② */
+	document.onload = windowOnload();
+	// 문객체 모델이 load 될 때, windowOnload() 스크립트 함수 호출하겠다.
+	// body 태그 부르는 것보다 조금 더 먼저,
+	// 문서가 읽어질 때, 경고창 띄움
+
+	function windowOnload()
+	{
+		alert("경고창~!!!");
+		// 이 함수 호출되면 경고창 하나 띄우겠다.
+	}
+
+</script>
+
+</head>
+
+<!-- 이벤트 등록 방법 ① 
+     : body 태그가 로드될 때/body 태그 내용 읽어들일 때,
+       그 때, windowOnload() 함수 호출 -->
+<!-- <body onload="windowOnload()"> -->
+<body>
+
+<h1>이호석</h1>
+<h2>배부르다~!!!</h2>
+<h2>졸리다~!!!</h2>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023_teacher.html</title>
+<style type="text/css">
+	* { color: #223322; }
+	input {
+		font-family: 나눔고딕코딩;
+		font-weight: bold;	
+	}
+	input:focus { background-color: #eeeedd; }
+	input.btn { 
+		width: 90px; 
+		font-weight: bold;
+		font-family: 맑은고딕; 
+	}
+	input.btn:hover { color: orange; }
+	.txt {text-align: right;}
+	textarea {font-family: 나눔고딕코딩; font-weight: bold;}
+</style>
+<script type="text/javascript">
+
+	function actionScore()
+	{
+		var str = "";
+		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array());
+		//					  이름들     국어점수들   영어점수들   수학점수들     총점들        등수들
+		
+		var n = 0;
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학(" + (n+1) + ") : ");
+			
+			if (str == null || str == "." || str == " " || str == "")
+				break;
+			
+			var member = str.split(" ");
+			
+			arr[0][n] = member[0];
+			arr[1][n] = member[1];
+			arr[2][n] = member[2];
+			arr[3][n] = member[3];
+			arr[4][n] = Number(member[1]) + Number(member[2]) + Number(member[3]);
+			arr[5][n] = 1;
+
+			n++;
+			
+		} while (true);
+		
+		// 석차(등수) 계산
+		for (var i = 0; i < arr[0].length; i++)
+		{
+			for (var j = 0; j < arr[0].length; j++)
+			{
+				if (i == j)
+					continue;	// 뒷부분 무시하고 계속해라
+				
+				// 총점 비교
+				if (Number(arr[4][i]) < Number(arr[4][j]))
+				{
+					// arr[5][1] = 1 넣어놔서 그냥 넣어도 되지만,
+					// 문자 들어있을 거 대비해서 이렇게 해봄
+					arr[5][i] = (Number(arr[5][i]) + 1).toString();
+				}
+			}
+		}
+		
+		//--------------------------- 여기까지 수행하면 arr 배열 구성 끝~!!!
+		
+		var result = "";
+		
+		for (var i = 0; i < arr[0].length; i++)
+		{
+			for (var j = 0; j < arr.length; j++)
+			{
+				result += arr[j][i] + "\t";
+			}
+			result += "\n";
+		}
+		
+		document.getElementById("txtCount").value = arr[0].length;
+		document.getElementById("memberList").value = "이름	국어	영어	수학	총점	등수\n";
+		document.getElementById("memberList").value += result;
+	}
+
+</script>
+
+</head>
+<body>
+<div>
+	<h1>prompt & 2차원 배열 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<input type="button" class="btn" value=" 성적 정보 입력 " style="width: 200px;" onclick="actionScore()">
+		<br><br>
+		전체 인원 수 : <input type="text" id="txtCount" readonly="readonly" style="width: 20px;">
+		<br><br>
+		<textarea rows="20" cols="60" id ="memberList" readonly="readonly"></textarea> 
+	</form>
+</div>
+</div>
+</body>
+</html>

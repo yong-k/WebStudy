@@ -1,0 +1,84 @@
+@charset "UTF-8";
+@font-face {
+    src: url("../fonts/BMJUA_ttf.ttf");
+    font-family: Jua;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F0E8D9;
+}
+
+h1 {
+  font-size: 64px;
+  font-family: Jua;
+  text-align: center;
+  color: #58595b;
+  margin-top: 75px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 32px;
+  font-family: Jua;
+  text-align: center;
+  color: #58595b;
+  margin-bottom: 75px;
+}
+
+/* 이번에 추가된 코드 */
+.container {
+	height: 200px;
+	width: 660px;	/*쌤도 계산해서 넣어줬음 !*/
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.food {
+  background-color: white;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  overflow: hidden;
+  
+  /* 이번에 추가된 코드 */
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#food3 {clear: left;}
+
+.food .info {
+  padding: 20px;
+  text-align: center;
+}
+
+.food h3 {
+  color: #58595b;
+  font-size: 32px;
+  font-family: Jua; 
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.food p {
+  color: #58595b;
+  font-size: 16px;
+  font-family: Jua;
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.food a {
+  color: #0000ee;
+  font-size: 16px;
+  font-family: Jua;
+  text-decoration: none;
+}

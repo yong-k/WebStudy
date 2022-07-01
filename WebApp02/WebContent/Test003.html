@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test003.html</title>
+
+<style type="text/css">
+		p {color: green; font-size: 16pt; font-weight: bold;}
+		
+		/* cascade 특징을 갖고 있어서 type1들의 속성은 설정색으로 바뀌었지만,
+		   font-size는 위에서 설정한 16pt 로 적용되고 있다. */
+		p.type1 {color: #947ef7;}
+		p.type2 {color: blue;}
+		
+		/* 현재 type3 는 <p> 태그에도, <span> 태그에도 지정되어 있다. 
+		   그냥 뭔지 명시하지 않고 『.type3』라고 해서 사용하면,
+		   둘 다 적용된다.
+		   그런데 둘이 지금 다른 이유는, p.type3는 위에서 설정한
+		   font-weight: bold; 를 cascade에 의해 영향받고 있기 때문이다. */
+		.type3 {color: black; font-size: 27pt;}
+</style>
+
+</head>
+<body>
+	<div>
+		<h1>class 를 선택자로 활용</h1>
+		<hr>
+	</div>
+	
+	
+<div>
+	<p>그냥 p 태그만 페이지에 적용할 경우 이렇게 확인된다.</p>
+	<p class="type1">하지만, 클래스를 사용할 경우 이렇게 확인된다.</p>
+	<p class="type2">또한, 다른 클래스를 사용할 경우 이렇게 확인된다.</p>
+	<p class="type1">여기서는 이렇게</p>
+	<p class="type2">저기서는 저렇게</p>
+	<p class="type3">거기서는 그렇게</p>
+	<span class="type3">span 태그 영역에서는 이렇게</span>
+</div>
+	
+</body>
+</html>

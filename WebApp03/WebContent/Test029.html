@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test029.html</title>
+
+<style type="text/css">
+	* {color: #223322;}
+	input {font-family: 나눔고딕코딩; font-weight: bold;}
+	input:focus {background: #eeeedd;}
+	.btn {font-weight: bold; font-family: 맑은 고딕}
+	.btn:hover {color: orange;}
+	.txt {text-align: center; font-weight: bold;}
+	#resultArea {font-family: 맑은 고딕; font-weight: bold;}
+	#txtCount {width: 20px;}
+</style>
+<script type="text/javascript">
+	
+	function actionChoice()
+	{
+		// checkbox 는 id 대신 name으로 얻어온다!
+		var checkObj = document.getElementsByName("checkGroup");
+		var msg = "";
+		var flag = true;
+		var count = 0;
+		// 확인
+		//alert(checkObj);
+		//--==>> [object NodeList] → 자바스크립트 배열
+		//alert(checkObj.length);	
+		//--==>> 6 (체크박스 객체 개수인듯)
+		
+		for (var i = 0; i < checkObj.length; i++)	// 0 1 2 3 4 5 → 6번 반복
+		{
+			// 확인
+			//alert(checkObj[i].checked);
+			//--==>> 체크되어있으면 true 나올거다. 아니면 false
+			
+			// 체크박스 처리할 때, 값 여러개 선택 가능하므로, 주의해야 한다 !
+			// --> 그래서 복합대입연산자 쓸 것이다.
+			if (checkObj[i].checked)	//-- 체크박스가 체크되어 있으면,
+			{
+				msg += checkObj[i].value + " ";
+				// 라디오버튼에서는 여기서 바로 break; 했지만 
+				// checkbox 에서는 그러면 안 된다.
+				// → 뒤에 체크해놓은거 더 있을수도 있으니까
+				
+				// 위에서 flag 로 잡아놓은 거, 
+				// checkbox 선택된 거 하나라도 있으면 false로 바꿔준다. 
+				flag = false;
+				count++;
+			}
+		}
+		
+		// 선택된 거 없을 경우에는,
+		if (flag)
+		{
+			msg ="선택한 과목이 없습니다.";
+			alert(msg);
+		}
+		else // 있을 때는
+		{
+			alert("과목 " + count + "개 : " + msg);
+		}
+		
+	}
+	
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>라디오버튼, 체크박스 다루기</h2>
+	
+	<form>
+		--- 과목 선택 --- <br><br>
+		
+		<input type="checkbox" name="checkGroup" id="a" value="자바기초"> <label for="a">JAVA Beginning</label>	
+		<input type="checkbox" name="checkGroup" id="b" value="오라클"> <label for="b">Oracle</label>
+		<input type="checkbox" name="checkGroup" id="c" value="자바심화"> <label for="c">JAVA Advanced</label><br>	
+		<input type="checkbox" name="checkGroup" id="d" value="웹클라이언트"> <label for="d">Web Client</label>	
+		<input type="checkbox" name="checkGroup" id="e" value="웹APP서버"> <label for="e">JSP/Servlet</label>	
+		<input type="checkbox" name="checkGroup" id="f" value="프레임워크"> <label for="f">Framework</label><br>
+		<br>
+		
+		<button type="button" class="btn" onclick="actionChoice()">선택 완료</button>
+		
+	
+	</form>
+	
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+</body>
+</html>

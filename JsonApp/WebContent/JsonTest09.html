@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest09.html</title>
+<script type="text/javascript">
+
+	var myJsonObject9 = 
+	{
+		"superman" :
+		{
+			"name" : "kimtaehyong"
+			, "age" : 48
+			, "hobby" : ["song", "dance"]
+		}
+	}
+
+</script>
+</head>
+<body>
+
+<form>
+	
+	<input type="button" value="click1" onclick="alert(typeof myJsonObject9)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : object -->
+
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject9.superman)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : object -->
+	
+	<br /><br />
+	
+	<input type="button" value="click3" onclick="alert(typeof myJsonObject9.superman.name)" />
+	<!-- click3 버튼 클릭했을 때 나오는 값 : string -->
+	<input type="button" value="click4" onclick="alert(typeof myJsonObject9.superman.age)" />
+	<!-- click4 버튼 클릭했을 때 나오는 값 : number -->
+	<input type="button" value="click5" onclick="alert(typeof myJsonObject9.superman.hobby)" />
+	<!-- click5 버튼 클릭했을 때 나오는 값 : object -->
+
+	<br /><br />
+
+	<input type="button" value="click6" onclick="alert(myJsonObject9.superman.hobby[0])" />
+	<!-- click6 버튼 클릭했을 때 나오는 값 : song -->
+	<input type="button" value="click7" onclick="alert(typeof myJsonObject9.superman.hobby[0])" />
+	<!-- click7 버튼 클릭했을 때 나오는 값 : string -->
+</form>
+
+</body>
+</html>

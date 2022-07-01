@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test015.html</title>
+
+<style type="text/css">
+	*
+	{
+		color: #343;
+		font-family: 맑은 고딕;
+	}
+	
+	input.box:focus
+	{
+		background-color: yellow;
+	}
+	
+	input.btn:hover
+	{
+		color: orange;
+		font-weight: bold;
+	} 
+	
+	input.numberBox
+	{
+		width: 50px;
+		text-align: right;
+	}
+	
+</style>
+
+<script type="text/javascript">
+/* 왼쪽에 123 쓰고 a버튼 누르면 오른쪽 텍스트에 123쓰이고,
+   오른쪽에 abc 쓰고 b버튼 누르면 왼쪽 텍스트에 123abc 추가되게
+   서로 토스토스 하게 해보기 */
+
+/*   // 수업 때, 내가 한 거
+   function btnAonclick()
+   {
+	   document.getElementById("txtRight").value = document.getElementById("txtLeft").value;
+   }
+   
+   function btnBonclick()
+   {
+	   document.getElementById("txtLeft").value = document.getElementById("txtRight").value;
+   }
+*/
+//------------------------------------------------------------------------------------
+// 복습하면서 내가 한 거!
+//------------------------------------------------------------------------------------
+	function clickBtn(btn) {
+		let textLeft = document.getElementById("textLeft");
+		let textRight = document.getElementById("textRight");
+		
+		if (btn.id === 'btnL')
+			textRight.value = textLeft.value;
+		else if (btn.id === 'btnR')
+			textLeft.value = textRight.value;
+	}
+	
+	function addNum() {
+		let num1 = document.getElementById("num1").value;
+		let num2 = document.getElementById("num2").value;
+		let textResult = document.getElementById("textResult");
+		
+		let result = Number(num1) + Number(num2);
+		textResult.value = result;
+	}
+//------------------------------------------------------------------------------------
+
+	// 쌤이 한 거
+	// alert() 사용해서 값 잘 얻어지는 확인하면서 코드작성하자!
+	function actionBtnA()
+	{
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		//alert(txt01);
+		//alert(txt01.value); → 위와 같은 결과 나옴
+		//alert(txt02);
+		
+		var leftStr = txt01.value;
+		txt02.value = leftStr;
+	}
+	
+	function actionBtnB()
+	{
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		var rightStr = txt02.value;
+		txt01.value = rightStr;	
+	}
+	
+	//-----------------------------------------------------------
+	
+	function actionBtnResult()
+	{
+		// ①
+		//-- 이렇게 하면 안 됨....
+		/* var num1 = document.getElementById("txtNumber01").value;
+		var num2 = document.getElementById("txtNumber02").value;
+		var result = document.getElementById("txtResult").value;
+		// → 이렇게 result에 담으면 txtResult의 value 값을 result 변수에 넣은거
+		// 	  그리고 그냥 그 result 변수에 num1 + num2 해봤자 result 변수 값만 달라지는거지
+		// 	  txtResult의 value 가 바뀌는 건 NO!
+		result = parseInt(num1) + parseInt(num2);  */
+		
+		
+		// ② → 쌤 曰 : 이렇게만 해도 됨
+		//document.getElementById("txtResult").value = parseInt(document.getElementById("txtNumber01").value) + parseInt(document.getElementById("txtNumber02").value);
+		
+		
+		// ③
+		/* var num1 = document.getElementById("txtNumber01").value;
+		var num2 = document.getElementById("txtNumber02").value;
+		var result = document.getElementById("txtResult");
+		
+		result.value = parseInt(num1) + parseInt(num2);  */
+		
+		
+		// 쌤
+		var num1 = document.getElementById("txtNumber01").value;
+		var num2 = document.getElementById("txtNumber02").value;
+		
+		//var result = num1 + num2;						//-- (Ⅹ) 문자열 결합
+		//var result = parseInt(num1 + num2);			//-- (Ⅹ) 문자열 결합된 결과물을 정수형태로 변환
+		//var result = parseInt(num1) + parseInt(num2);	//-- (○)
+		
+		// 위의 방법 말고 num1 변수를 Number 화 시키는 방법도 있다.
+		// Number() 객체 사용 : 숫자모양으로 생긴 문자열 넘겨주면 숫자로 바꿔주는 역할 수행함
+		var result = Number(num1) + Number(num2);
+		
+		// 확인
+		//alert(result);
+		
+		document.getElementById("txtResult").value = result;
+		//---------------------------------
+		// 여기까지 하면 Object
+	}
+
+	
+	
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 기본 관찰</h1>
+	<hr>
+</div>
+
+<div>
+	<br>
+	<input type="text" class="box" id="txtLeft">
+	<!-- <input type="button" value="A버튼" class="btn" id="btnA" onclick="btnAonclick()">
+	<input type="button" value="B버튼" class="btn" id="btnB" onclick="btnBonclick()"> -->
+	<input type="button" value="A버튼" class="btn" id="btnA" onclick="actionBtnA()">
+	<input type="button" value="B버튼" class="btn" id="btnB" onclick="actionBtnB()">
+	<input type="text" class="box" id="txtRight">
+	<br>
+	<hr>
+	<br>
+	
+	<input type="text" class="numberBox" id="txtNumber01">
+	+
+	<input type="text" class="numberBox" id="txtNumber02">
+	<input type="button" value=" = " class="btn" id="btnResult" onclick="actionBtnResult()">
+	<input type="text" class="numberBox" id="txtResult" disabled="disabled">
+	<!-- id가 txtResult 인 textbox에는 사용자가 직접 입력 못하게 disabled 설정해줌 -->
+</div>
+
+<br /><br />
+<hr />
+<h1>복습할 때 한 거</h1>
+<hr />
+
+<div>
+	<h2>실습1</h2>
+	<input type="text" id="textLeft" />
+	<input type="button" value="L버튼" id="btnL" onclick="clickBtn(this)"/>
+	<input type="button" value="R버튼" id="btnR" onclick="clickBtn(this)"/>
+	<input type="text" id="textRight" />
+	<br />
+	<br />
+	
+	<h2>실습2</h2>
+	<input type="text" id="num1" />
+	+
+	<input type="text" id="num2" />
+	<input type="button" value=" = " id="btn-result" onclick="addNum()" />
+	<input type="text" id="textResult" disabled="disabled"/>
+</div>
+
+</body>
+</html>

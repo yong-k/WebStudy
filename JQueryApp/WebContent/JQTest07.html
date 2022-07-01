@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest07.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	/*
+	$(function()
+	{
+		
+	});
+	*/
+	// ↑
+	// ├→ 두 개 아예 같은 개념/코드이다!
+	// ↓
+	$(document).ready(function()
+	{
+		/*
+		// #allCheck의 선택값이 변경되었을 때 기능하게 하겠다.
+		$("#allCheck").change(function()	
+		{
+			// 테스트
+			//alert("change");
+		});
+		*/
+		
+		// 기본적으로 우리가 여태 써왔던 click 은 안되나?
+		$("#allCheck").click(function()
+		{
+			// 테스트
+			//alert("change");
+			//→ 둘 다 잘 된다. change(), click() 둘 다 사용 가능하다.
+			
+			// BUT
+			
+			// 테스트
+			// ① attr()
+			//alert( $(this).attr("checked") );
+			//--==>> undefined
+			//-- 체크를 선택해도, 해제해도 둘 다 undefined 뜬다.
+			//   해당 attribute 값 존재하지 않는다는 뜻
+			//
+			//--==>> checkbox 는 attr()로 컨트롤되지 않음!!!
+			
+			
+			// ② prop()
+			// attribute 말고 property 로 확인해보자
+			// attr(), prop() 둘 다 속성임
+			// 그런데 checked 는 attr() 가 아니라 prop() 로 control 된다!
+			//alert( $(this).prop("checked") );
+			//-- 체크 선택됐을 때 true / 체크 해제됐을 때 false 뜬다.
+			
+			
+			// ③ js객체 활용해서 확인해보자
+			//alert( this.checked );
+			//-- 체크 선택됐을 때 true / 체크 해제됐을 때 false 뜬다.
+			
+			
+			// ④ is(:속성값) → jQuery 함수 이용
+			//    → 속성값이 ~인지 아닌지를 true/false 형으로 반환해줌
+			//alert( $(this).is(":checked") );
+			//-- 체크 선택됐을 때 true / 체크 해제됐을 때 false 뜬다.
+			
+			
+			// 모두선택 체크박스 선택하면 모두선택 해제하면 모두해제되게 코드작성
+			//나
+			/*
+			if ($(this).is(":checked"))
+				$("input[type=checkbox]").prop("checked", true);
+			else
+				$("input[type=checkbox]").prop("checked", false);
+			//-- 이렇게 하면, [모두 선택] 체크박스도 해당됨
+			// 마침 과일 checkbox 만 div에 감싸져 있다.	
+			*/
+			
+			// 방법 1. 
+			//$("div > input:checkbox").prop("checked", this.checked);
+			//-- this.checked가 true/false 반환하니까,
+			//   #allCheck 가  true 면 checkbox들 다  true → check 됨
+			//				  false 면 				 false → check 해제됨
+			
+			// 방법 2.
+			// 『$(선택자).children()』
+			$("div").children().prop("checked", this.checked);
+			//-----------------
+			// div아래 input들 다 선택됨
+			
+		});
+	});
+	
+</script>
+</head>
+<body>
+
+<label>
+	<input type="checkbox" id="allCheck" />
+	<span style="font-weight: bold;">모두 선택</span>
+</label>
+<br /><br />
+
+<div>
+	<input type="checkbox" id="check1"><label for="check1">바나나</label><br />
+	<input type="checkbox" id="check2"><label for="check2">딸기</label><br />
+	<input type="checkbox" id="check3"><label for="check3">복숭아</label><br />
+	<input type="checkbox" id="check4"><label for="check4">수박</label><br />
+	<input type="checkbox" id="check5"><label for="check5">멜론</label><br />
+</div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026_teacher</title>
+<style type="text/css">
+	* { color: #223322; }
+	input {
+		font-family: 나눔고딕코딩;
+		font-weight: bold;	
+	}
+	input:focus { background-color: #eeeedd; }
+	.btn { 
+		font-weight: bold;
+		font-family: 맑은고딕; 
+	}
+	.btn:hover { color: orange; }
+	.txt {text-align: right; font-weiht: bold; }
+</style>
+<script type="text/javascript">
+	function startGame()
+	{
+		var rspArr = ["가위", "바위", "보"];
+		
+		// ※ Math.random();	-- 0.0 ~ 1.0 사이의 실수 형태의 난수 발생
+		
+		// 현재 우리에게 필요한 것은 
+		// 1 ~ 3 의 정수 형태의 난수
+		var com = parseInt(Math.random() * 3) + 1;	// 0 1 2 → 1 2 3
+		var user = parseInt(document.getElementById("txtUser").value);
+		var resultStr = "";
+		
+		resultStr = ("사용자: " + rspArr[user-1] + " vs 컴퓨터: " + rspArr[com-1]);
+		
+		if (user == com)
+			resultStr += " → 무승부";
+		//else if(user == 1 && com == 2 || user == 2 && com == 3 || user == 3 && com == 1)
+		// 가위바위보에서 흔히 쓰이는 축약형 → 기억해두기
+		else if (user % 3 == (com + 2) % 3)
+			resultStr += " → ! LOSE !";		
+		else
+			resultStr += " → ! WIN !";		
+		
+		document.getElementById("txtResult").value = resultStr;
+	}
+</script>
+</head>
+<body>
+
+<!-- 
+html/css/javascript 공부 사이트
+① w3schools.com
+② koxo.com
+-->
+
+<!--  
+	가위바위보 게임을 구성한다.
+	HTML, Css, Javascript 를 활용한다.
+	자바스크립트 난수 발생 함수를 찾아 활용한다.
+	
+	페이지 레이아웃
+	-----------------------------------------------------------------
+	입력(1. 가위, 2. 바위, 3.보)		[		] <게임 결과 확인>
+	
+	[ 사용자: 바위	컴퓨터: 보	→ 컴퓨터가 이겼습니다. ]
+	-----------------------------------------------------------------
+-->
+
+<div>
+	<h1>가위바위보 게임 [난수 활용]</h1>
+	<hr>
+</div>
+
+<div>
+	입력(1.가위, 2.바위, 3.보)
+	<input type="text" id="txtUser" style="width: 65px;">
+	<button type="button" class="btn" onclick="startGame()">게임 결과 확인</button>
+	<br><br>
+	
+	<input type="text" id="txtResult" readonly="readonly" style="width: 360px;">
+</div>
+</body>
+</html>

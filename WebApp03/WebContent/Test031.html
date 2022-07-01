@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test031.html</title>
+
+<style type="text/css">
+	* { color: #223322; font-family: 맑은 고딕; font-weight: bold; }
+	.btn { width: 122px; font-size: 17px; }
+	.btn:hover { color: orange; font-weight: bold; }
+	#memberList { width: 700px; }
+</style>
+
+<script type="text/javascript">
+
+	// select 를 다루어보기 위한 테스트 함수 정의
+	function selectTest()
+	{
+		// 확인
+		//alert("함수 호출 확인~!!!");
+		
+		// ① 첫 번째 방법 → 일반 text박스 다루듯이 다뤄봄
+		//var position = document.getElementById("userPosition").value;
+		
+		// 확인
+		//alert(position);
+		//--==> vfr(사원)
+		//-- select box : 일반 text box 컨트롤하듯이 다뤄도 다룰 수 있음
+		
+		// ② 두 번째 방법
+/*		
+		var positionObj = document.getElementById("userPosition");
+		// select 에서는 그 안을 구성하고 있는 옵션들을 『.options』 로 얻어올 수 있다. 
+		var positionOptions = positionObj.options;
+		var positionMsg = "";
+		
+		// 확인
+		//alert(positionOptions);
+		//--==>> [object HTMLOptionsCollection] → 자바스크립트 배열
+		
+		//alert(positionOptions.length);
+		//--==>> 4
+		//-- 그 옵션의 수 만큼 돌면서 처리할 수 있다는 것을 의미한다.
+		
+		for (var i = 0; i < positionOptions.length; i++)	// 0 1 2 3
+		{
+			// 확인
+			//alert(positionOptions[i].selected);
+			//--==>> 선택된 옵션 항목에 따라 true / false 형태로 확인
+			//       사원이 선택되으면 → false false false true 나온다.
+			
+			if (positionOptions[i].selected)	// positionOptions[i]에 selected 되어있는게 있으면
+			{
+				// positionOptions[i]의 value를 positionMsg에 담겠다.
+				positionMsg = positionOptions[i].value;
+				
+				// 지금은 select box를 단일 선택으로 만들어놨기 때문에
+				// 더 볼 필요 없음
+				break;
+				
+				// 그럼 다중 선택이 가능할 때는?
+				// positionMsg에 계속 덧붙이도록 하고, break는 있으면 안된다.
+				//positionMsg += positionOptions[i].value + " ";
+				
+			}
+		}
+		
+		// 확인
+		alert(positionMsg);
+*/		
+		
+		//					  selectBox에서 
+		// ③ 세 번째 방법 → 가장 많이 쓰이는 방법!
+/*		
+		var positionObj = document.getElementById("userPosition");
+		
+		// 확인
+		//alert(positionObj.selectedIndex);
+		//--==>> 부장 선택하면 『0』 과장『1』 대리『2』 사원『3』 나온다.
+		
+		//alert(positionObj.options[2].value);
+		//    -----------
+		//		→ 자바스크립트배열
+		//	  ----------------------
+		//		  			→ 대리
+		//    ----------------------------
+		//							→ 대리의 직위아이디
+		//--==>> cde(대리)
+		
+		var positionMsg = positionObj.options[positionObj.selectedIndex].value;
+		
+		// 확인
+		//alert(positionMsg);
+*/		
+	}
+	
+	function addMember()
+	{
+		// 확인
+		//alert("함수 호출 확인~!!!");
+		
+		// 밑에 테이블 틀 만들어놓은 거 있으니 뭐 할 건지 감이 올 것이다.
+		var uName = document.getElementById("userName").value;
+		var uSsn = document.getElementById("userSsn").value;
+		
+		// selectBox이지만 아래와 같이 처리가능하다.
+		//var uCity = document.getElementById("userCity").value;
+		// 다른 방식으로 처리해보면,
+		var cityObj = document.getElementById("userCity");
+		
+		// 확인
+		//alert(cityObj.selectedIndex);
+		//--==>> 서울→0, 대전→1, 광주→2, 대구→3
+		
+		//alert(cityObj.options[cityObj.selectedIndex].value);
+		//--==>> 1123(서울) / 2380(대전) / 5567(광주) / 9984(대구)
+		
+		var uCity = cityObj.options[cityObj.selectedIndex].value;
+		
+		var buseoObj = document.getElementById("userDepartment");
+		var uBuseo = buseoObj.options[buseoObj.selectedIndex].value;
+		
+		var positionObj = document.getElementById("userPosition");
+		var uPosition = positionObj.options[positionObj.selectedIndex].value;
+		
+		var uBasicPay = document.getElementById("userBasicPay").value;
+		
+		// 테이블 그리기 ---------------------------------------------------------------------
+		var tableNode = document.getElementById("memberList");
+		var trNode = document.createElement("tr");
+		
+		trNode.appendChild(createTdNode(uName));
+		trNode.appendChild(createTdNode(uSsn));
+		trNode.appendChild(createTdNode(uCity));
+		trNode.appendChild(createTdNode(uBuseo));
+		trNode.appendChild(createTdNode(uPosition));
+		trNode.appendChild(createTdNode(uBasicPay));
+		
+		tableNode.appendChild(trNode);
+		// --------------------------------------------------------------------- 테이블 그리기
+		
+		// 테이블 다 그린 후에, 입력값 초기화
+		//formClear();
+		// 이렇게 하나하나 설정해서 하는 거 말고, 다른 방법으로 해보자
+		// document 하나에 form 여러개 구성할 수 있다.
+		// document 에 forms[] 있음
+		// submit이나 reset 은 form 안에 넣어서 사용해야 한다.
+		document.forms[0].reset();
+		//--==>> 이건 reset 버튼 누른거랑 똑같이 동작한다.
+		// 그럼 여기서는 formClear() 만들어서 사용할 필요 없게 됨
+		
+		// 이름 입력칸에 포커스 맞춰져 있게 설정
+		document.getElementById("userName").focus();
+	}
+	
+	function createTdNode(val)
+	{
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");
+		tdNode.appendChild(textNode);
+		return tdNode;
+	}
+	
+	
+	/* 하나 입력하면 입력값 다 초기화되고, 비어있는 이름칸에 포커스 맞춰져 있게 해보자. */
+/*	
+	function formClear()
+	{
+		document.getElementById("userName").value = "";
+		document.getElementById("userSsn").value ="";
+		var cityObj = document.getElementById("userCity");
+		cityObj.options[0].selected = true;
+		var buseoObj = document.getElementById("userDepartment");
+		buseoObj.options[3].selected = true;
+		var jikwiObj = document.getElementById("userPosition");
+		jikwiObj.options[3].selected = true;
+		document.getElementById("userBasicPay").value = "";
+		
+	}
+*/
+</script>
+
+</head>
+<body>
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>선택목록(select) 다루기</h2>	
+	<form>
+		<table>
+			<tr>
+				<td>이름</td>
+				<td>
+					<input type="text" id="userName">
+				</td>
+			</tr>
+			<tr>
+				<td>주민번호</td>
+				<td>
+					<input type="text" id="userSsn">
+				</td>
+			</tr>
+			<tr>
+				<td>지역</td>
+				<td>
+					<!-- <input type="text" id="userCity"> -->
+					<select id="userCity">
+						<!-- 실제컨트롤은 『서울』이라는 이름이 아니라, value 값으로 한다. -->
+						<option value="1123(서울)">서울</option>
+						<option value="2380(대전)">대전</option>
+						<option value="5567(광주)">광주</option>
+						<option value="9984(대구)">대구</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>부서</td>
+				<td>
+					<!-- <input type="text" id="userDepartment"> -->
+					<select id="userDepartment">
+						<!-- selected 속성 부여하면 제일 위에 뜬다.
+						     영업부에 직원 가장 많다고 해서 그냥 코드 위치 자체를 맨 위로 올리는거 바람직하지 않음 -->
+						<option value="9987(개발부)">개발부</option>
+						<option value="9988(인사부)">인사부</option>
+						<option value="9989(자재부)">자재부</option>
+						<option value="9990(영업부)" selected="selected">영업부</option>
+						<option value="9991(총무부)">총무부</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>직위</td>
+				<td>
+					<!-- <input type="text" id="userPosition"> -->
+					<select id="userPosition">
+						<option value="zaq(부장)">부장</option>
+						<option value="xsw(과장)">과장</option>
+						<option value="cde(대리)">대리</option>
+						<option value="vfr(사원)" selected="selected">사원</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>기본급</td>
+				<td>
+					<input type="text" id="userBasicPay">
+				</td>
+			</tr>
+		</table>
+		
+		<!-- <input type="button" value="직원 추가" class="btn" onclick="selectTest()"> -->
+		<input type="button" value="직원 추가" class="btn" onclick="addMember()">
+		<input type="reset" value="입력 취소" class="btn">
+		<br><br>
+		
+		<table id="memberList">
+			<tr>
+				<td>이름</td>
+				<td>주민번호</td>
+				<td>지역</td>
+				<td>부서</td>
+				<td>직위</td>
+				<td>기본급</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</body>
+</html>

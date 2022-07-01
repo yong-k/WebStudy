@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test006.html</title>
+
+<script type="text/javascript">
+	
+	num1 = 10;					// 변수 num1 에 10 대입
+	document.write("num1=");	// 문자열 출력
+	document.write(num1);		// 변수 출력
+	
+	num1 = 100;						// 변수 num1 에 100 대입 
+	document.write("\nnum1=");		// 『\n』개행 안되고 있음
+	// 개행하고 싶으면
+	document.write("<br>num1=");	// 라인 스킵(개행)을 위해 사용한 <br>
+	document.write(num1);			// 변수 출력
+	
+	num1 = "2022년 4월을 시작하는 어느 날...";
+	document.write("<br>num1=")		// 『;』 안써도 에러 안난다.
+	// 자바스크립트에서도 『;』는 종결자가 아니라
+	// statement를,구문과 구문을 구분하기 위한 구분자 역할
+	// 세미콜론 뿐 아니라 개행을 사용해도 statement 끝났다고 생각해줌
+	document.write(num1);			// 변수 출력
+	
+	num2 = 200;						// 변수 num2 구성
+	
+	num1 = num2;					// 변수 num1 에 변수 num2 대입
+	document.write("<br>num1=");	
+	document.write(num1);
+	
+</script>
+
+
+
+</head>
+<body>
+
+</body>
+</html>

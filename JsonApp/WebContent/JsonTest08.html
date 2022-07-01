@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest08.html</title>
+<script type="text/javascript">
+
+	var myJsonObject8 = 
+	{
+		"test" :
+		[
+			
+			"ccc", "ddd"
+		]
+		, "exam" :
+		[
+			"kkk", "ppp"
+		]
+	}
+	/*(└→ ==) var myJsonObject8 = { "test" : ["ccc", "ddd"], "exam" : ["kkk", "ppp"] } */
+
+</script>
+</head>
+<body>
+
+<form>
+
+	<input type="button" value="click1" onclick="alert(myJsonObject8)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : [object Object] 
+		 버튼 클릭해도 값 나오지 않는다. 타입이 배열이 아니라 더미 안찍힌다. -->
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject8)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : object -->
+	
+	<br /><br />
+
+	<input type="button" value="click3" onclick="alert(myJsonObject8.test)" />
+	<!-- click3 버튼 클릭했을 때 나오는 값 : ccc,ddd
+		 myJsonObject8은 배열이 아니지만, myJsonObject8.test의 값은 배열이다. -->
+	<input type="button" value="click4" onclick="alert(typeof myJsonObject8.test)" />
+	<!-- click4 버튼 클릭했을 때 나오는 값 : object 
+		 타입은 object 이다 !-->
+	
+	<br /><br />
+
+	<input type="button" value="click5" onclick="alert(myJsonObject8.test[0])" />
+	<!-- click5 버튼 클릭했을 때 나오는 값 : ccc
+		 myJsonObject8은 배열이 아니지만, myJsonObject8.test의 값은 배열이다. -->
+	<input type="button" value="click6" onclick="alert(typeof myJsonObject8.test[0])" />
+	<!-- click6 버튼 클릭했을 때 나오는 값 : string
+		 ccc의 타입은 string 이다 !-->
+	
+	<br /><br />
+
+	<!-- 아래 7번 8번 버튼은 -->
+	<!-- ※ 객체 구조상 2차원 배열의 형태로 볼 수 있지만 -->
+	<!-- 다음과 같은 접근이나 처리는 불가능하다. -->
+	
+	<!-- 확인해보면 둘 다 아무것도 안 나온다. -->
+	<input type="button" value="click7" onclick="alert(myJsonObject8.[0][0])" />
+	<!-- position 으로 보자면 'ccc'를 얘기하는 걸꺼다.  -->
+	<!-- 버튼 클릭해도 아무것도 나오지 않는다. -->
+	<input type="button" value="click8" onclick="alert(myJsonObject8.[1][1])" />
+	<!-- position 으로 보자면 'ppp'를 얘기하는 걸꺼다.  -->
+	<!-- 버튼 클릭해도 아무것도 나오지 않는다. -->
+
+	<!-- <input type="button" value="click8" onclick="alert(myJsonObject8.test[0][0])" /> -->
+	<!-- → ccc 중에 c나온다.
+	test[0][3] 은 undefined나온다. -->
+</form>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+
+<script type="text/javascript">
+	
+	document.onload = windowOnload();
+	
+	function windowOnload()
+	{
+		alert("경고");
+	}
+</script>
+
+</head>
+<body>
+</body>
+</html>

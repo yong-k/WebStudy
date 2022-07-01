@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>addr-detailed</title>
+
+<script type="text/javascript">
+	function myAddr(addr)
+	{
+		window.opener.document.getElementById("addr1").value = addr;
+		
+		
+		
+		window.opener.document.getElementById("txt1").innerHTML = addr;
+		
+		window.close();
+		
+	}
+</script>
+
+</head>
+<body>
+	
+<div>
+	<form action="">
+		주소 검색
+		<input>
+		<input type="button" value="검색" /><br /><br />
+		
+		<a href="javascript:myAddr('04044 서울 마포구 서교로 1가')">서교로 1가</a>
+		<br />
+		<a href="javascript:myAddr('04045 서울 마포구 서교로 2가')">서교로 2가</a>
+		<br />
+		<a href="javascript:myAddr('04046 서울 마포구 서교로 3가')">서교로 3가</a>
+		<br />
+		<a href="javascript:myAddr('04047 서울 마포구 서교로 4가')">서교로 4가</a>
+		<br />
+	</form>
+</div>	
+	
+</body>
+</html>

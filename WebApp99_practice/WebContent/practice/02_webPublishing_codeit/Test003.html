@@ -1,0 +1,66 @@
+<!-- 코드잇 html/css ch2-(3)display-11강 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test003.html</title>
+<style type="text/css">
+	.container {
+		width: 300px;
+		height: 400px;
+		background-color: gray;
+		text-align: center;
+	}
+	
+	/* ② */
+	.helper {
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		
+		/* ③ 아래 2개 지우자 */	
+		/* width: 10px; */
+		/* background-color: red; */
+		
+	}
+	
+	.info {
+		background-color: lime;
+		display: inline-block;
+		vertical-align: middle;
+	/*  → 요소의 가운데를 부모 요소의 소문자 'x'의 가운데와 맞춰준다. */
+	
+		/* ④ .info에 가로길이 100%로 주면, 이상한 위치로 가버림... */
+		width: 100%;
+		/* 이유: .helper와 .info 요소 사이에 띄어쓰기가 한 칸 있어서,
+		         가로 길이 100%인 .info 요소는 자리 부족으로 다음 줄로 간다.
+		   이 문제 해결하기 위해서는 두 가지 방법 있다.
+		   1) .helper 와 .info 띄어쓰기 없애기
+		   2) 띄어쓰기 만큼 마이너스 여백 준다. (margin-left: -7px) 
+		      여기 경우에는 띄어쓰기 5~7px 였다.  */
+		
+		/* ④-2) 띄어쓰기 만큼 마이너스 여백 준다. */
+		/* margin-left: -7px; */
+	}
+</style>
+</head>
+<body>
+
+<div class="container">
+	<!-- ③ 소문자 'x' 지우고, .helper 요소의 가로 길이 없애면 된다. -->
+	<!-- x -->
+	<!-- ① info 요소를 완전 가운데로 오게 하려면, 우선 소문자 'x'가 가운데로 와야 한다. 
+	     → 세로 길이가 100%인 요소를 만들고, 그 요소에도 vertical-align: middle; 을 해보자. 
+	         class="helper"로 만들어보자.-->	         
+	<!-- <div class="helper"></div>
+	<div class="info"> -->
+	
+	<!-- ④-1) .helper 와 .info 띄어쓰기 없애기 -->
+	<div class="helper"></div><div class="info"> 
+		<h1>Hello!</h1>
+		<p>My name is yong.</p>
+	</div>
+</div>
+
+</body>
+</html>

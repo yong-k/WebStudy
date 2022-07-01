@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test016.html</title>
+
+<style type="text/css">
+	* 
+	{ 
+		color: #14105e;
+		font-family : 함초롬돋움;
+		font-weight: bold;
+	}
+	
+	input:focus
+	{
+		background-color: #eeeedd;
+	}
+	
+	input.btn
+	{
+		width: 80px;
+		font-weight: bold;
+		font-family: 맑은 고딕;
+	}
+	
+	input.btn:hover
+	{
+		color: gray;
+	}
+	
+	input.btn:active
+	{
+		color: red;
+	}
+	
+	.txtNum
+	{
+		width: 80px;
+	}
+	
+</style>
+
+<script type="text/javascript">
+/*
+// 내 풀이
+	function actionBtnAdd()
+	{
+		var num1 = parseInt(document.getElementById("num1").value);
+		var num2 = parseInt(document.getElementById("num2").value);
+		
+		document.getElementById("result").value = num1 + num2;
+	}
+	
+	function actionBtnSub()
+	{
+		var num1 = parseInt(document.getElementById("num1").value);
+		var num2 = parseInt(document.getElementById("num2").value);
+		
+		document.getElementById("result").value = num1 - num2;
+	}
+	
+	function actionBtnMul()
+	{
+		var num1 = parseInt(document.getElementById("num1").value);
+		var num2 = parseInt(document.getElementById("num2").value);
+		
+		document.getElementById("result").value = num1 * num2;
+	}
+	
+	function actionBtnDiv()
+	{
+		var num1 = parseInt(document.getElementById("num1").value);
+		var num2 = parseInt(document.getElementById("num2").value);
+		
+		document.getElementById("result").value = num1 / num2;
+	}
+*/	
+	//쌤 풀이 ①
+	/* function test(num)
+	{
+		alert(num);
+	} */
+	
+	//쌤 풀이 ②
+	function test(obj)
+	{
+		//alert(obj);
+		//-- 그 object 자체가 반환된다.
+		//alert(obj.value);
+		//-- 그 object의 value인 더하기,빼기,곱하기,나누기 나옴
+		
+		// 무슨 버튼이 클릭되든지 공통사항으로 입력된 정수 2개 가져와야 된다.
+		var vNum1 = document.getElementById("num1").value;
+		var vNum2 = document.getElementById("num2").value;
+		var vResult = 0;
+		
+		if (obj.value == "더하기")
+		{
+			//alert("덧셈 연산 수행");
+			vResult = parseInt(vNum1) + parseInt(vNum2);
+		}
+		else if (obj.value == "빼기")
+		{
+			//alert("뺄셈 연산 수행");
+			vResult = parseInt(vNum1) - parseInt(vNum2);
+		}
+		else if (obj.value == "곱하기")
+		{
+			//alert("곱셈 연산 수행");
+			vResult = parseInt(vNum1) * parseInt(vNum2);
+		}
+		else if (obj.value == "나누기")
+		{
+			//alert("나눗셈 연산 수행");
+			vResult = parseInt(vNum1) / parseInt(vNum2);
+		}
+		
+		document.getElementById("result").value = vResult;
+	}
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<p>사용자로부터 두 개의 정수를 입력받고</p>
+	<p>합, 차, 곱, 몫을 연산하여 연산 결과를 페이지에 출력할 수 있도록 한다.</p>
+	<p>HTML, CSS, Javascript 를 활용하여 처리한다.</p>
+</div>
+
+<div>
+	<form>
+		정수1 <input type="text" id="num1" class="txtNum">
+		정수2 <input type="text" id="num2" class="txtNum">
+		<br><br>
+		
+		<!-- 내 풀이 : 함수 4개 정의	
+		<input type="button" class="btn" value="더하기" onclick="actionBtnAdd()">
+		<input type="button" class="btn" value="빼기" onclick="actionBtnSub()">
+		<input type="button" class="btn" value="곱하기" onclick="actionBtnMul()">
+		<input type="button" class="btn" value="나누기" onclick="actionBtnDiv()">
+		<br><br> -->
+		
+		<!-- 쌤 풀이 ① 같은 함수 사용, 매개변수로 구분 -->
+		<!-- <input type="button" class="btn" value="더하기" onclick="test(1)">
+		<input type="button" class="btn" value="빼기" onclick="test(2)">
+		<input type="button" class="btn" value="곱하기" onclick="test(3)">
+		<input type="button" class="btn" value="나누기" onclick="test(4)">
+		<br><br> -->
+		
+		<!-- 쌤 풀이 ② 
+		자바에서 this 는 그 객체 자체를 의미하는 거였지만,
+		자바스크립트에서 this 는 그 컨트롤 object를 의미함
+		지금 Line161에서 쓰인 this는 다른 라인이 아닌 딱 Line 161의 컨트롤 object를 의미한다.-->
+		<input type="button" class="btn" value="더하기" onclick="test(this)">
+		<input type="button" class="btn" value="빼기" onclick="test(this)">
+		<input type="button" class="btn" value="곱하기" onclick="test(this)">
+		<input type="button" class="btn" value="나누기" onclick="test(this)">
+		<br><br>
+		
+		결과 <input type="text" id="result" class="txtNumResult" disabled="disabled">
+		<input type="reset" class="btn" value="취소">
+	</form>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

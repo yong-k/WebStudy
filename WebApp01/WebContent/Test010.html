@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test010.html</title>
+</head>
+<body>
+	
+<div>
+	<h1>이미지 다루기</h1>
+	<hr>
+</div>	
+
+<div>
+	<h2>이미지 정렬을 확인해 보도록 하자</h2>
+	<!-- Test010.html과 images 폴더가 같은 패키지 안에 있으니까ㅣ
+		 상대경로로 접근하게 함 -->	
+	<img src="images/img_02.gif">
+	<!-- 비율 깨지지 않은 상태에서 컨트롤 가능 -->
+	<img src="images/img_02.gif" width="100">
+	<img src="images/img_02.gif" height="50">
+	<!-- 이미지 크기 조정하면서 절대 하지 말아야 하는 건,
+		 직접 가로 세로 지정해버리면, 그 절대값에 맞춰져서 이미지 깨진다. 
+		 원본 이미지의 비율 훼손하게 된다.-->
+	<img src="images/img_02.gif" width="200" height="100">
+	<br><br>
+	
+	<!-- 넓이를 줄거면 넓이만, 높이를 줄거면 높이만 주면,
+	가로세로 비율 맞춰서 크기조절 이루어진다. 
+	위,아래 정렬 맞춰보기 위해 border 속성 사용해보자.-->
+	<img src="images/img_02.gif" width="100" border="10"
+	vspace="200" hspace="100" align="top">위 아래 정렬 실습	
+</div>
+	<!--
+		++) search...	<img> 태그 속성
+		
+		1) align
+		
+		align=top;		→ 이미지의     윗 부분에 맞춰 글자 출력
+		align=middle;	→ 이미지의 가운데 부분에 맞춰 글자 출력
+		align=bottom;	→ 이미지의   아래 부분에 맞춰 글자 출력
+		
+		align=left;		→ 이미지가 웹 브라우저 화면의   왼쪽에 정렬
+		align=right;    → 이미지가 웹 브라우저 화면의 오른쪽에 정렬
+		
+		2) vspace, hspace : 이미지 주변에 여백을 설정
+		
+		vspace : 이미지의 상하에 지정한 픽셀 수만큼 여백을 준다.
+		hspace : 이미지의 좌우에 지정한 픽셀 수만큼 여백을 준다.
+		
+		→ 상하 / 좌우 이렇게 양쪽 모두에 공백을 주게 된다.
+		   어느 한 쪽에만 여백을 설정할 수는 없다.
+		
+		
+		
+		 
+	-->
+
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+</body>
+</html>

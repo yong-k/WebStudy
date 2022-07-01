@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest01.html</title>
+
+<!-- 제이쿼리 관찰해보자 -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	// 헷갈리지 말기!!
+	// EL 표현방식 : ${}
+	// jQuery 기본 함수 : $();
+	
+	// anonymous function 으로 선택해서 만듦
+	$(function()
+	{
+		var d = 300;
+		
+		// each() 에 매개변수로 기능을 넘겨줄거임 → 익명의 함수로
+		$("#navigation a").each(function()
+		{
+			// animate() 의 첫 번째 매개변수로 '속성'
+			//            , 두 번째 매개변수로 '값' 넘겨줄거임
+			// 첫 번째 매개변수 : 속성은 여러 개 넘길 수 있으므로, 
+			//                    {} 사용해서 {속성이름:값} 으로 넘김
+			$(this).stop().animate({"marginTop":"-80px"}, d+=150);
+		});
+		
+		$("#navigation > li").hover(function()
+		{
+			$("a", $(this)).stop().animate({"marginTop":"-2px"}, 10);
+		}, function()
+		{
+			$("a", $(this)).stop().animate({"marginTop":"-80px"}, 900);
+		});
+	});
+	//-- 이거 자바스크립트로 짤 수 있으나, 코드 많이 필요함 ㅎㅎ
+	
+</script>
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>
+			<ul id="navigation">
+				<li class="home"><a href="#"><span>Home</span></a></li>
+				<li class="about"><a href="#"><span>About</span></a></li>
+				<li class="search"><a href="#"><span>Search</span></a></li>
+				<li class="photos"><a href="#"><span>Photos</span></a></li>
+				<li class="rssfeed"><a href="#"><span>Rss Feed</span></a></li>
+				<li class="podcasts"><a href="#"><span>Podcasts</span></a></li>
+				<li class="contact"><a href="#"><span>Contact</span></a></li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

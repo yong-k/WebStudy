@@ -1,0 +1,81 @@
+<!-- 
+	지금까지 보내는쪽 send는 html 로 보내고, 받는 receive 는 jsp 였다.
+	html로 기록된건 정적인 페이지다.(정적인 메뉴판)
+	서버의 상황에 따라 다른 메뉴판을 가지고 나와야 하는 상황이라면
+	→ send 페이지도 html로 못 만든다. 
+	   메뉴판도 동적으로 만들어야 한다 
+	   → 보내는 쪽도 적어도 html 이면 안 되고, jsp 나 servlet 이어야 한다.
+	   
+	내가 보낸 페이지를 내가 직접 수신할거다.
+	내가 혼자 send 하고, 혼자 receive 하고 → 이건 html 가능할까?
+	→ 클라이언트가 보낸걸 어떤 방식으로든 receive 한다고 하면 html로 안된다!!!
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send05.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+	body { font-family: 맑은고딕; }
+	span {
+		font-weight: bold;
+		margin: 10px;
+	}
+	select {
+		margin: 20px;
+		width: 110px;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+
+<!--  
+	○ 데이터 송수신 실습 05
+	   - 구구단 결과를 출력하는 JSP 페이지(Receive05.jsp)를 구성한다.
+	   - 원하는 단수를 입력받아 화면에 출력해주는 형태의 페이지로 구현한다.
+	   - 단, submit 버튼 없이 이벤트 처리를 할 수 있도록 한다.
+	   
+	   단 수 선택 [  1단  ▼ ]	→ select
+	   				 2단
+	   				 3단
+	   				  :
+	   				 9단
+	   				 
+	   - select 선택 시
+	     해당 단의 구구단 내용을 출력하는 JSP(Receive05.jsp)로 
+	     데이터를 전달하여 내용을 구성할 수 있도록 한다.
+	      
+	   - 사용자의 최초 요청 주소는
+		 http://localhost:8090/WebApp07/Send05.html 로 한다.
+	   
+	○ Send05.html
+	   Receive05.jsp	       
+-->
+
+<div>
+	<h1>데이터 송수신 실습 05</h1>
+	<hr>
+</div>
+
+<div>
+	<form action="Receive05.jsp" method="get">
+		<span>단 수 선택<span>
+		<select name="selectDan" onchange="this.form.submit()">
+			<option value="-">-- 선택 --</option>
+			<option value="1">1단</option>
+			<option value="2">2단</option>
+			<option value="3">3단</option>
+			<option value="4">4단</option>
+			<option value="5">5단</option>
+			<option value="6">6단</option>
+			<option value="7">7단</option>
+			<option value="8">8단</option>
+			<option value="9">9단</option>
+		</select>
+	</form>
+</div>
+
+</body>
+</html>

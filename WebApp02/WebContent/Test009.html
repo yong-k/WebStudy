@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test009.html</title>
+
+<!-- ① css 파일 사용해서 link 사용 -->
+<link rel="stylesheet" type="text/css" href="css/externalStyle.css">
+
+<style type="text/css">
+	/* ② import 방식 사용 */
+	@import url("css/importStyle.css");
+	
+	/* ③ embedded 방식 사용 */
+	p {font=size: 100px; color: black;}
+</style>
+
+</head>
+<body>
+
+<div>
+	<h1>스타일 적용의 우선순위 규칙</h1>
+	<hr>
+</div>
+
+<!-- ④ inline 방식 사용 -->
+<p style="color: orange; font-size: 20pt;">이와 같은 상황이라면... 나는 어떻게 표현되어야 할까...</p>
+
+</body>
+</html>
+
+<!-- 
+4가지 방법 중에 뭘 써야 하는지에 대해 책마다 다 다른데,
+틀리게 쓰여있는 책들도 너무 많다.
+
+스타일 적용해야하는 대상 봤을 때,
+물리적으로 가장 가까운게 우선순위가 가장 높음
+
+현재 여기서 <p> 태그로 봤을 때, 4번 > 3번 > 2번 > 1번 으로 물리적 거리가 가까우니까..
+그러므로 우선순위도 4 > 3 > 2 > 1번으로 적용된다.
+
+그러므로, inline 방식으로 쓰는 거 매우 좋지 않다.
+나중에 통일성 있게 한 번에 바꾸기 어려워진다.
+우선순위가 가장 높다보니까.....
+ -->

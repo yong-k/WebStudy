@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 992px;
+  font-family: "Helvetica";
+}
+
+/* navbar */
+#navbar {
+	height: 60px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+#logo {
+	float: left;
+	line-height: 60px;
+}
+
+#logo img {
+	width: 149px;
+	height: 20px;
+	vertical-align: middle;
+}
+
+#menu {
+	list-style: none;
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+#menu li {
+	float: left;
+}
+
+#menu li a {
+	font-family: "Helvetica";
+	font-weight: bold;
+	color: #545454;
+	text-decoration: none;
+	line-height: 60px;
+}
+
+#menu li a:not(last-child) {
+	margin-right: 30px;
+}
+
+/* hero header */
+#hero-header {
+	height: 450px;
+	background-image: url("../images/hero_header.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+h2 {
+	font-family: "Helvetica";
+	font-size: 24px;
+	color: #545454;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 40px;
+}
+
+/* products */
+.container {
+	/*width 설정 안해주면 가운데 정렬 안됨...*/
+	width: 715px;			
+	margin-left: auto;
+	margin-right: auto;	
+}
+
+.products {
+	width: 225px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Helvetica";
+	font-size: 16px;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.products:nth-child(3n+1) {
+	clear: left;
+}
+
+.products:not(:nth-child(3n)) {
+	margin-right: 20px;
+} 
+
+.products:hover {
+	border: 1px solid #828181;
+}
+.products a {
+	color: #545454;
+	text-decoration: none;
+}
+.products img {
+	width: 225px;
+	height: 225px;
+	margin-bottom: 20px;
+}
+
+span.product-name {
+	display: inline-block;
+	margin-bottom: 4px;
+}
+
+.clear {
+	clear: left;
+}
+/* footer */
+#footer {
+	margin-top: 80px;
+	margin-bottom: 80px;
+	text-align: center;
+}
+#footer a:not(:last-child) {
+	margin-right: 20px;
+}
+#footer a img {
+	height: 20px;
+}

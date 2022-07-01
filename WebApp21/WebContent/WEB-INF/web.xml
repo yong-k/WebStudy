@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>WebApp00</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 아무 작업도 안했다면, 루트로만 들어왔을 때 바로 뜨게 하는 페이지들 -->
+
+	<!-- Test1 클래스 만들어 둔 거 → Servlet 구성해줘야 한다. 
+		 Servlet 구성할 때 필수항목 → servlet-name 
+		이 있어야 한다. 여러개 서블릿 중에 '너 나와!' 하는 것이다. -->
+	<!-- Test1 클래스 → Servlet 구성 ① -->
+	<!-- <servlet> 
+			<servlet-name>kimjeongyong</servlet-name> 
+			<servlet-class>com.svt.Test1</servlet-class> 
+		</servlet> -->
+
+	<!-- mapping 시키려면 완전히 똑같은지 확인해서 하기 때문에 따로 타이핑하지 말고, 우리 믿지말고!! 복붙하자!!! ※ 
+		url-pattern 쓸 때 『/』 빼먹으면 안된다 -->
+	<!-- Test1 클래스 → Servlet 구성 ② -->
+	<!-- <servlet-mapping> 
+			<servlet-name>kimjeongyong</servlet-name> 
+			<url-pattern>/test1</url-pattern> 
+		</servlet-mapping> -->
+
+	<servlet>
+		<servlet-name>test1Servlet</servlet-name>
+		<servlet-class>com.svt.Test1</servlet-class>
+		<!-- name이라는 parameter 값의 value를 '김정용'으로 초기화하겠다. 
+			  age  라는 parameter 값의 value를     '20'으로 초기화하겠다. -->
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>김정용</param-value>
+		</init-param>
+		<init-param>
+			<param-name>age</param-name>
+			<param-value>20</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>test1Servlet</servlet-name>
+		<url-pattern>/test1</url-pattern>
+	</servlet-mapping>
+
+
+	<context-param>
+		<param-name>type</param-name>
+		<param-value>유머러스</param-value>
+	</context-param>
+
+	<!-- ① servlet-mapping → url-pattern : test2 요청 들어오면 
+		 ② <servlet-mapping → servelt-name> 이랑 <servlet → servelt-name> 같은거 찾아서 
+		    → (여기선) test2Servelt 이름가진거 찾아서 
+		 ③ servlet → servlet-class : 찾으면 com.svt.Test2 인스턴스 생성한다. -->
+	<servlet>
+		<servlet-name>test2Servlet</servlet-name>
+		<servlet-class>com.svt.Test2</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>test2Servlet</servlet-name>
+		<url-pattern>/test2</url-pattern>
+	</servlet-mapping>
+</web-app>
+
+<!-- web.xml 수정되면, server 꼭 restart 해줘야 한다!! -->

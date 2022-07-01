@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest05.html</title>
+<script type="text/javascript">
+
+	var myJsonObject5 = 
+	{
+		"test" : function(args)
+		{
+			alert("Method test : " + args);
+		}
+	}
+	
+	/* test속성을 t에 대입하는 형태이다. */
+	var t = myJsonObject5.test;
+	// ↕ 구문 둘이 의미 다름!!
+	/* var t = myJsonObject5.test(data); */
+	
+</script>
+</head>
+<body>
+
+	<input type="button" value="click1" onclick="t('minsung')" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 → Method test : minsung -->
+	<!-- t라는 이름을 가진 스크립트 함수 호출하면서, 함수 안에 'minsung'이라는 값 넣음
+		 엄밀히 말하면, 여기서는 t라는 이름을 가진 함수 보이지 않지만,
+	 	 myJsonObject5.test속성이 t에 대입되면서, t 속성이 함수가 되었다. -->
+	 	 
+	<input type="button" value="click2"
+	 onclick="eval('var a=' + myJsonObject5.test); a('moonjung')" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 → Method test : moonjung -->
+	
+	<input type="button" value="click3" 
+	onclick="eval( '(' + myJsonObject5.test + ')(\'sunha\')' )"/>
+	<!-- 따옴표 많아서 헷갈리겠지만 → myJsonObject5.test('sunha') 이거임 -->			
+	<!-- click3 버튼 클릭했을 때 나오는 값 → Method test : sunha -->
+</body>
+</html>

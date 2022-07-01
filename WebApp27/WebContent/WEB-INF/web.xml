@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- web.xml = 배치 기술서 -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+	id="WebApp_ID" version="3.1">
+  <display-name>WebApp00</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 
+  <servlet>
+  	<servlet-name></servlet-name>
+  	<servlet-class></servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name></servlet-name>
+  	<url-pattern></url-pattern>
+  </servlet-mapping>
+  -->
+  
+  <servlet>
+  	<servlet-name>HelloReceive02</servlet-name>
+  	<servlet-class>com.test.svt.HelloReceive02</servlet-class>
+  </servlet>
+  <!-- 
+	  spring framework 의 패키지 기본 레벨 최소 3레벨이라
+	  조금씩 바꿔나갈거임!
+	  그래서 com.svt.HelloReceive02로 이제 작성 
+  -->
+  
+  <servlet-mapping>
+  	<servlet-name>HelloReceive02</servlet-name>
+  	<url-pattern>/helloreceive02</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

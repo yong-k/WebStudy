@@ -1,0 +1,118 @@
+
+HTML/CSS/JS
+
+jdbc할 때 쓰던 환경 그대로 가져오기---------------------------------------------------
+
+일단 이클립스  jdbcStudy 로 시작 <jdbc preferences export 할꺼임>
+file > export > general > preferences > next
+	> browse... > 다운로드 디렉토리에 [11_JDBC_epf] 폴더 선택 > 
+	> 파일 이름 : jdbcStandard > 저장 
+	> finish
+
+이클립스 webStudy 로 시작
+이클립스 설정
+일단 1차적으로 JDBC 설정으로 하고, 그 다음에 추가적인 설정 할 거임
+file > import > general > preferences > next 
+	> from preference file-browse...
+	> 다운로드 디렉토리 > [11_JDBC_epf] 폴더 > jdbcStandard.epf 선택 > 열기
+	> import all 체크 되어있는지 확인 > finish > restart
+--------------------------------------------------------------------------------------
+
+
+--○ tomcat 등록
+
+- 톰캣부터 플러그인으로 등록하자
+  이제는 서버계속 돌고 있어야 클라이언트한테 전달해주고,
+  클라이언트가 페이지 보니까 이렇더라~ 이런게 되어야 한다.
+  밑에 보면 Servers 탭 > create a new server... 
+  > Apache 노드 확장 > Tomcat v8.5 Server > next 
+  > browse(톰캣이 인스톨 되어있는 주소 넣게 되어 있음)
+  > c드라이브에 있는 『apache-tomcat-8.5.54』 폴더 안에 들어가서
+  > next > finish
+  → 그럼 Servers 탭에 Tomcat v8.5 Server at localhost [Stopped, Republish]
+     라고 쓰여있음
+     여기서 실행시키면 안되고,
+
+  왼편에 project explorer 에서 servers 생겼음 
+  servers > Tomcat v8.5 Server at localhost-config > server.xml 더블클릭
+  더블클릭했을 때 나오는건 이클립스의 css가 설정된 거임 
+  밑에 쪽에 design, source 있는데 source 클릭하면 코드 나옴
+  Line 63으로 가기 
+  > Apache port 가 8080으로 되어 있는데 8080은 웹에서 오라클이 쓰고 있음
+    오라클의 기본 포트번호는 1521인데 웹 상의 포트번호는 8080이다.
+  >> 그래서 포트번호 『8090』으로 수정하기
+
+  Line 63에서 
+  > 그리고 한글 깨져 나오는거 최대한 방지하기 위해서
+    Connector 뒤에 한 칸 띄우고
+    『URIEncoding="UTF-8"』   써주기
+  > ctrl+s 눌러서 저장하고 닫기
+
+  이제 아파치 톰캣 실행할껀데, 방화벽 열어달라고 1~2번 정도 뜰거다.
+  그거 다 허용해줘야 함!!!
+
+  Servers 탭에서 Tomcat~~ 마우스 우클릭 > start 누르고
+  방화벽 뭐 안내창 뜨면 ok 눌러주기
+  → 그럼 [Started, Synchronized] 로 바뀌어 있음
+
+  ※ 여태까지만 해도 ctrl+f11 눌러서 실행하다 에러나면 바로 수정해서
+     바로 또 실행누르면 에러 바로바로 처리됐었다.
+     그런데 지금은 돌고 있는 프로그램도 많고 무거워서 컴퓨터 사양 좋지 않으면
+     되게 속도 느려짐.....그러다 servers 뻗어버릴 수도 있음
+     쫌 텀을 두고 하기..! 이클립스 우측 맨 아래 전구있는 상태줄에서 
+     뭐 돌고 있으면 쫌 기다렸다가 하기
+     바로 홱홱 돌아가면 안 된다!!!!
+
+- 우측 상단에 Perspective 'EE'로 선택
+  예전에는 SE 기반의 문법이라 좌측에 뜨는 거 Package Explorer 였는데, 
+  지금부터는 EE기반의 문법이라 좌측에 Project Explorer 떠있다.
+  Create a Dynamic Web project 
+  → 이거 좌측에 안 떠있으면 file > new 에서 선택하면 되고,
+     거기에 dynamic web project 없으면, 
+     file > new > other...> web > dynamic web project 선택
+  Project name : WebApp01
+    → 서버에서 아파치톰캣 등록전에는 target runtime > none 으로 되어 있었는데,
+       우리가 등록해서 Apache Tomcat v8.5 로 되어있는거다.
+       나중에는 거기서 new Runtime... 해서 새로 서버등록해서 써도 된다.
+  > next (원래는 그냥 finish 눌러도 되는데, 특정한 화면 하나 보려고 넘어옴)
+  > next (웹서버 launch하면 웹컨테이너라는 걸 쓰게 된다)
+	  웹컨테이너란?
+	    웹클라이언트의 요청이 적재되고, 웹서비스 일꾼의 작업영역,
+            클라이언트들이 abc.html 나한테 줄래? 라고 요청하면 줄 수 있는 문서들이
+            쌓여있는 공간이다.
+    그 밑에 generate web.xml deployment descriptor
+    web.xml 배치 기술서를 생성하는 형태로 다이나믹 웹 프로젝트를 만들려면 체크하면 됨
+    지금은 체크설정 없이 
+  > finish
+
+- 지금은 JDBC 환경만 가져온 상태라 다른 웹 환경도 설정해야함
+  window > preferences > Web 
+	> CSS Files  > Encoding : ISO 10646/Unicode(UTF-8) > Apply
+	> HTML Files > Encoding : ISO 10646/Unicode(UTF-8) > Apply
+	> JSP Files  > Encoding : ISO 10646/Unicode(UTF-8) > Apply
+  	  JSP Files > Editor > Templates > New JSP File (html 5) 선택 > edit
+	  > pattern 수정할거임 (아래처럼)
+<%@ page contentType="text/html; charset=${encoding}"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="${encoding}">
+<title>Insert title here</title>
+</head>
+<body>
+${cursor}
+</body>
+</html>
+	> ok > apply
+	
+  window > preferences 
+	> Server > Runtime Environments 에 아파치톰캣 8.5 하나 있는지 확인해보기
+	> JavaScript > Code Style > Formatter > new... 
+	  > profile name : standard > ok
+	  > Braces > same line 이라고 되어있는거 다 next line 으로 바꿔주기
+	             마지막 array initializer 만 same line 으로 두기 !!
+	  > apply > ok > apply
+	> JavaScript > Runtimes 에서 Chrome 으로 되어있는지 확인
+	> apply and close
+
+  window > Web Browser > 3 Chrome

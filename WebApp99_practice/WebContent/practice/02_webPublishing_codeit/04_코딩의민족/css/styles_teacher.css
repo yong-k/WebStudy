@@ -1,0 +1,78 @@
+@charset "UTF-8";
+@font-face {
+    src: url("../fonts/BMJUA_ttf.ttf");
+    font-family: Jua;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F0E8D9;
+}
+
+h1 {
+  font-size: 64px;
+  font-family: Jua;
+  text-align: center;
+  color: #58595b;
+  margin-top: 75px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 32px;
+  font-family: Jua;
+  text-align: center;
+  color: #58595b;
+  margin-bottom: 75px;
+}
+
+.food {
+  background-color: white;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  /*사진 모서리 둥글게 하는 법 ② 다른 방법  */
+  overflow: hidden;
+}
+/* 모서리 둥글게 만든 .food 위에 
+   사진이 덮어쓰고 있어서 사진은 모서리 네모나게 나온다.*/
+/* 사진 모서리 둥글게 하는 법 ① 대부분 생각했을 방법
+.food img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+*/
+.food .info {
+  padding: 20px;
+  text-align: center;
+}
+
+.food h3 {
+  color: #58595b;
+  font-size: 32px;
+  font-family: Jua; 
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.food p {
+  color: #58595b;
+  font-size: 16px;
+  font-family: Jua;
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.food a {
+  color: #0000ee;
+  font-size: 16px;
+  font-family: Jua;
+  text-decoration: none;
+}
+

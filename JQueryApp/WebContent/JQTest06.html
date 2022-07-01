@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest06.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		// 초기 게시물 구성 → 스크롤 생성될 만큼 ---------------------------------
+		// 브라우저 창 보다 document 사이즈가 커야 스크롤이 생긴다!
+		var docheight = $(document).height();
+		
+		// 테스트
+		//alert(docheight);
+		//--==>> 882
+		//-- 문서(document)의 높이
+		//   각자 pc마다 다르게 나옴
+		
+		// 스크롤의 높이
+		var scrollheight = $(window).scrollTop() + $(window).height();
+		// 스크롤의 제일 윗부분과 윈도우의 높이를 더함
+		
+		// 테스트
+		//alert(scrollheight);
+		//--==>> 882
+		//-- 브라우저의 크기 다르게 하면 숫자 달라짐!
+		
+		for(var i = 0; i < 30; i++)
+		{
+			// 아까 사용한 건 append()   : 주체는 앞에. 앞에꺼에 뒤에꺼 붙여라
+			// 지금 쓴 거는   appendTo() : 주체는 뒤에. 뒷부분에 앞에꺼 붙여라! 
+			//$("<h3>기존의 읽어온 게시물 " + $(document).height() + "</h3>").appendTo("body");
+			// 기존 읽어온 게시물의 document 의 높이를 찍어오겠다.
+			// 브라우저 기본 크기만큼은 높이 동일한테
+			// 벗어나서 스크롤 내리면 높이 커진다.
+			$("<h3>기존의 읽어온 게시물 " + $(document).height() + " / "
+										  + $(window).scrollTop() + " / "
+										  + $(window).height()
+										  + "</h3>").appendTo("body");
+		}
+		
+		// --------------------------------- 초기 게시물 구성 → 스크롤 생성될 만큼
+		
+		// 스크롤이 움직이면 기능하게 하겠다.
+		// ┌→ 무한 스크롤 (추가로 읽어온 게시물 부분을 DB에서 읽어와서 
+		// │                처리하게끔 하면 된다)
+		$(window).scroll(function()
+		{	
+			var docHeight = $(document).height();
+			var scrollHeight = $(window).scrollTop() + $(window).height();
+			
+			
+			// 스크롤이 바닥으로 내려졌을 때...
+			// 태그 10개 추가하여 body에 붙이기
+			if (docHeight == scrollHeight)
+			{
+				for (var i = 0; i < 10; i++)
+				{
+					$("<h3>추가로 읽어온 게시물 " 
+							  + $(document).height() + " / "
+							  + $(window).scrollTop() + " / "
+							  + $(window).height()
+							  + "</h3>").appendTo("body");
+				}
+			}
+			
+		});
+	});
+
+</script>
+</head>
+<body>
+<!--  
+	이번실습 ex) 요기요 홈페이지
+	스크롤 바닥 닿으면 또 내려가고 내려가고 하는 형태라면
+	페이징 처리 필요없음
+	스크롤 바닥에 닿으면 db에서 읽어와서 append 시키는 형태
+	
+	원래는 저거 짜려면 되게 작성할 거 많음
+	복잡한 거 생략하고 살펴보자
+	
+	이번 실습)
+	웹페이지의 확대/축소 100%로 딱 맞춰놓기
+-->
+</body>
+</html>

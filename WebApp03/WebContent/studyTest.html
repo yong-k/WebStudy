@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>studyTest.html</title>
+<style type="text/css">
+	 #errMsg {
+	 	color: red;
+	 	font-size: small;
+	 	display: none;
+	 }
+	 #menuTable { display: none; }
+</style>
+<script type="text/javascript">
+	
+	function objTest()
+	{
+		function Blog(b, d)
+		{
+			this.body = b;
+			this.date = d;
+			
+			this.userLocalString = function()
+			{
+				return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+			};
+		}
+			
+		var blog = new Blog("블로그 개설", "2022-01-14");
+		var str = blog.body + "/" + blog.date;
+		
+		var arr = [ new Blog("개설", new Date("2022/01/14"))
+				  , new Blog("레이아웃", new Date("2022/02/10"))
+				  , new Blog("객체생성", new Date("2022/02/16")) ];
+		
+		str = "<table border='1' class='table'>";
+		str += "<tr><th>제목</th><th>날짜</th></tr>";
+		
+		for (var i = 0; i < arr.length; i++)
+		{
+			str += "<tr>";
+			str += "<td>" + arr[i].body + "</td>";
+			str += "<td>" + arr[i].userLocalString() + "</td>";
+			str += "</tr>";
+		}
+		
+		str += "</table>";
+		
+		var result = document.getElementById("result");
+		result.innerHTML = str;
+		
+		Board.prototype.userLocalString  = function()]
+
+		
+	}
+</script>
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트</h1>
+	<hr />
+</div>
+
+<div>
+	<h2>자바스크립트 객체(사용자 정의 객체)</h2>
+	
+	<div>
+		<input type="button" value="사용자정의객체테스트" onclick="objTest()" class="btn control" />
+		<br /><br />
+		
+		<div id="result"></div>
+	</div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+

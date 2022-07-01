@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test019_teacher.html</title>
+
+<style type="text/css">
+	* { color: #223322; }
+	input {
+		font-family: 나눔고딕코딩;
+		font-weight: bold;	
+	}
+	input:focus { background-color: #eeeedd; }
+	input.btn { 
+		width: 90px; 
+		font-weight: bold;
+		font-family: 맑은고딕; 
+	}
+	input.btn:hover { color: orange; }
+	td { text-align: center; }
+	.txt { text-align: right; }
+	textarea { 
+		font-family: 나눔고딕코딩;
+		font-weight: bold;  
+	}
+</style>
+
+<script type="text/javascript">
+	function myCalculate()
+	{
+		// 새로 입력받기 전에 textarea 초기화 작업
+		document.getElementById("result").value = "";
+		
+		var nNum = Number(document.getElementById("num").value);
+		var nSum = 0;
+		
+		if (nNum < 100)
+		{
+			alert("! 100 이상의 정수만 입력가능합니다 !");
+			// 자바스크립트에서도 자바처럼 return문 사용가능
+			return;
+		}	
+		
+		for (var i = 1; i <= nNum; i++)	//-- 1 부터 사용자가 입력한 값(nNum)까지 1씩 증가하며 반복 수행
+		{
+			nSum += i;	//-- nSum을 n만큼씩 증가
+			
+			if (i % 10 == 0)
+				document.getElementById("result").value += "1 ~ " + i + " : " + nSum + "\n"; 
+		}
+		
+		document.getElementById("result").value += ">> 1 ~ " + (i-1) + " : " + nSum + "\n";
+	}
+</script>
+
+</head>
+<body>
+
+<!--  
+	사용자로부터 임의의 정수 n 을 입력받아
+	1부터 n 까지의 합을 계산하되 n 은 100 이상만 허용하고
+	출력 시 10의 배수가 될 때마다 중간 합을 출력할 수 있는 페이지를 구성한다.
+	반복문을 활용할 수 있도록 한다.
+	
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃						(입력값은 100 이상만 가능!)
+	---------------------------------------------------------------
+	정수 입력(100 이상) [  101	]	→ 조건 유효성
+	
+		< 결과 > 	< 취소 >
+		
+	-----------------------------	→ textarea
+	  1 ~ 10 : 55		┐
+	  1 ~ 20 : 210		│
+	  1 ~ 30 : xxx		│ 중간합
+	  	:				│
+	  1 ~ 100 : 5050	┘
+	  1 ~ 101 : 5051	─ 최종합
+	-----------------------------
+	
+	---------------------------------------------------------------
+-->
+
+<div>
+	<h1>반복문 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<div>
+			정수 입력(100 이상)
+			<input type="text" id="num" class="txt">
+		</div>
+		<br>
+		<div>
+			<input type="button" value="결과" class="btn" style="width: 150px" onclick="myCalculate()">
+			<input type="reset" value="취소" class="btn" style="width: 150px">
+		</div>
+		<br>
+		<div>
+			<!-- textarea에 사용자가 글 못 쓰게 → readonly 속성 부여 -->
+			<textarea rows="10" cols="43" id="result" readonly="readonly"></textarea>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

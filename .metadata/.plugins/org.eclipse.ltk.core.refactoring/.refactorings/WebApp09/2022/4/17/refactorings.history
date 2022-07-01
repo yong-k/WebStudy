@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;DBConn.java&apos; to &apos;WebApp00/src/com.util&apos;&#x0D;&#x0A;- Original project: &apos;WebApp09&apos;&#x0D;&#x0A;- Destination element: &apos;WebApp00/src/com.util&apos;&#x0D;&#x0A;- Original element: &apos;com.util.DBConn.java&apos;" description="Copy compilation unit" destination="=WebApp00/src&lt;com.util" element1="/src&lt;com.util{DBConn.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1650258358802" units="1" version="1.0"/>
+</session>

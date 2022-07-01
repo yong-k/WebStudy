@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test036.html</title>
+
+<!-- <link href=""> 만 해도 되기는 하지만, rel, type 적용하는 경우 있기 때문에 꼭 쓰자! -->
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+	th { text-align: left; }
+</style>
+
+<script type="text/javascript">
+
+	function objTest()
+	{
+		// 확인
+		//alert("함수 호출 완료~!!!");
+		
+		// 사용자 정의 객체(생성자) 정의 → 객체 안에 함수 없는 경우
+		function Blog(b, d)
+		{
+			// 객체를 구성하는 속성
+			this.body = b;
+			this.date = d;
+		}
+		
+		// 객체 생성
+		var blog = new Blog("블로그 개설", "2022-01-14");
+		
+		// 생성된 객체의 속성(멤버) 접근
+		var str = blog.body + " / " + blog.date;
+		
+		// 확인
+		//alert(str);
+		
+		/*
+		var ob1 = new Blog("블로그 개설", "2022-01-14");;
+		var ob2 = new Blog("블로그 레이아웃 구성", "2022-02-10");
+		var ob3 = new Blog("생성자 이용한 객체 생성", "2022-02-16");
+		
+		// 자바스크립트 배열 안에 블로그 객체 들어가있다.
+		var arr = [ob1, ob2, ob3];
+		*/
+		
+		// 위에처럼 쓰는 대신에, 아래처럼 쓰는 것도 가능 → 같은 구문
+		// 사용자 정의 객체 여러 개를 배열 구조에 저장
+		var arr = [ new Blog("블로그 개설", "2022-01-14")
+				  , new Blog("블로그 레이아웃 구성", "2022-02-10")
+				  , new Blog("생성자 이용한 객체 생성", "2022-02-16") ];
+		
+		str = "<table border='1' class='table'>";
+		str += "<tr><th>제목</th><th>날짜</th></tr>";
+		
+		for (var i = 0; i < arr.length; i++)
+		{	
+			str += "<tr>";
+			str += "<td>" + arr[i].body + "</td>";
+			str += "<td>" + arr[i].date + "</td>";
+			str += "</tr>";
+		}
+		
+		str += "</table>";
+		
+		var result = document.getElementById("result");
+		result.innerHTML = str;
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>자바스크립트 객체(사용자 정의 객체)</h2>
+	
+	<div>
+		<!-- 클래스 속성 아래와 같이 여러개 정의 가능하다 → 『공백』 이용해서 
+		     웹컨텐츠 속성 가급적 띄어쓰기하지말기!!!!! 
+		     띄어써도 되고 안되고가 아니라, 습관 들이지 말기! 안좋음
+		     type = "button" (Ⅹ)  type="button" (○) -->
+		<input type="button" value="사용자 정의 객체 테스트" class="btn control" onclick="objTest()">
+		<br><br>
+		
+		<div id="result"></div>
+	</div>
+</div>
+
+</body>
+</html>

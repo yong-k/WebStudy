@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023.html</title>
+<style type="text/css">
+	* { color: #223322;}
+	input {
+		font-family: 맑은고딕;
+		font-weight: bold;	
+	}
+	input:focus { background-color: #eeeedd; }
+	input.btn { 
+		width: 90px; 
+		font-weight: bold;
+		font-family: 맑은고딕; 
+	}
+	input.btn:hover { color: orange; }
+	.txt {text-align: right;}
+	textarea {font-family: 맑은고딕; font-weight: bold;}
+</style>
+<script type="text/javascript">
+	function inputScore()
+	{
+		var n = 0;	//-- 인원 수 몇 명인지 담을 변수
+		var str = "";
+		var arr = new Array();
+		var txtResult = document.getElementById("txtResult");
+		txtResult.value = "";
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학(" + (n+1) + ") : ");
+			
+			if (str == null || str == "." || str == " " || str == "")
+					break;
+			arr[n] = new Array(6);
+			arr[n] = str.split(" ");
+			
+			for (var i = 1; i <= 3; i++)
+				arr[n][i] = parseInt(arr[n][i]);
+			
+			arr[n][4] = 0;	// 총점에 0 대입
+			arr[n][5] = 1;	// 석차에 1 대입
+			
+			arr[n][4] = arr[n][1] + arr[n][2] + arr[n][3];
+			n++;
+		} while (true);
+
+		// 반복문 돌면서 석차 구하기
+		// 기본 석차 1로 놔두고 본인보다 총점 큰 사람 있으면 +1 해줌
+		for (var i = 0; i < arr.length; i++)
+		{
+			for (var j = 0; j < arr.length; j++)
+			{
+				if (arr[i][4] < arr[j][4])
+					arr[i][5] = arr[i][5] + 1;
+			}
+		}
+		
+		document.getElementById("txtCount").value = arr.length;
+		txtResult.value += "----------------------------------------------------\n";
+		txtResult.value += "이름	국어	영어	수학	총점	등수\n";
+		txtResult.value += "----------------------------------------------------\n";
+		for (var i = 0; i < arr.length; i++)
+		{
+			for (var j = 0; j < arr[i].length; j++)
+			{
+				txtResult.value += arr[i][j] + "\t";
+			}
+			txtResult.value += "\n";
+		}
+		txtResult.value += "----------------------------------------------------\n";
+		
+	}
+</script>
+</head>
+<body>
+<!--
+	『prompt()』를 활용하여 여러 명의 성적 데이터를 입력받고,
+	등수를 부여하여, 리스트를 출력하는 페이지를 구성한다.
+	HTML, CSS, Javascript 활용.
+	
+	페이지 레이아웃
+	---------------------------------------------------------
+	
+	< 성적 정보 입력 > 	   → prompt() 활용 : 이름 국어 영어 수학(1) : 
+	
+	전체 인원 수 : 		[		] 명
+	----------------------------------------------------	→ textarea
+	이름		국어	영어	수학	총점	등수
+	----------------------------------------------------
+	한충희		 80		 70		 60      xxx	 1등
+	양윤정		 70		 60		 50      xxx	 2등
+	박현수		 60		 50		 40      xxx	 3등
+	----------------------------------------------------
+	---------------------------------------------------------   
+-->	
+	
+	
+<div>
+	<h1>prompt & 2차원 배열 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<input type="button" id="inputBtn" value=" 성적 정보 입력 " onclick="inputScore()">
+		<br><br>
+		전체 인원 수 : <input type="text" id="txtCount" readonly="readonly">
+		<br><br>
+		<textarea rows="20" cols="60" id ="txtResult" readonly="readonly"></textarea> 
+	</form>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest04.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function()
+	{
+		//나
+		/*
+		$("h1").click(function()
+		{
+			$(this).html($(this).html() + "★");
+		});
+		*/
+		
+		//쌤
+		$("h1").click(function()
+		{
+			//function() 에서 function(html) 만 하면 클릭한거의 html 인덱스로 바뀜;
+			$(this).html(function(index, html)
+			{
+				return html + "★";
+			});
+		});
+		
+		
+		// ※ 이벤트 강제 발생시키기 : trigger(트리거)
+		// 이미 jQuery 에 의해 이벤트 걸려있는데,
+		// 그게 아니라 여기서는
+		// 저 이벤트가 일어난 것처럼 만드는 게 목적!
+		
+		// '트리거 작동' 버튼에 trigger 걸어보자
+		$("input[type=button]").click(function()
+		{
+			//alert("확인");
+			
+			// 강제로 첫 번째 h1 태그에 click 이벤트를 발생시키도록 하겠다.
+			//$("h1").first().click();
+			//-- 버튼 클릭하면 첫 번째 h1 태그에 ★ 찍힘
+			
+			// 강제로 마지막 h1 태그에 click 이벤트를 발생시키도록 하겠다.
+			$("h1").last().click();
+			
+			// 여러 개 있을 때는 인덱스로 접근
+			// 찾아보자!
+			//$("h1")[0].click();
+			//$("h1").get(0).click();
+			//$("h1").eq(0).click();
+
+			// [index] : DOM 개체 반환
+			// get()   : DOM 개체 반환
+			// eq()    : jQuery 객체 반환 → jQuery 메소드로 사용 가능
+			
+			// get(), eq() 는 실제 값을 가져오고
+			// index() 는 해당요소의 index 값을 가져온다.
+			
+			
+		});
+		
+		
+	});
+</script>
+</head>
+<body>
+
+<!-- 
+	JQTest04.html 에서 살펴보고 싶었던 것은
+	당사자가 아닌 다른 곳에서 trigger를 작동시키는 것
+	→ 해당 이벤트 발생시키지 않았는데, 발생한 것처럼 처리하고 싶은 것 
+-->
+<input type="button" value="트리거 작동" />
+<hr />
+
+	<!-- 얘네 클릭 할 때마다 ★ 찍히게 만들어보자 -->
+	<h1>click start1 : </h1>
+	<h1>click start2 : </h1>
+
+</body>
+</html>

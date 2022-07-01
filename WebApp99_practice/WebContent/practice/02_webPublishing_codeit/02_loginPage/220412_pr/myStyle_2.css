@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+	background-color: #EEEFF1;
+}
+
+.login-form {
+	background-color: #82768a;
+	width: 300px;
+	border-radius: 5px;
+	padding: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.text-field {
+	width: 100%;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.btn {
+	width: 100%;
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 15px;
+	background-color: #EEEFF1;
+	color: #333333;
+	font-size: 14px;
+}
+
+.btn:hover {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+}
+
+.links {
+	margin-top: 15px;
+	text-align: center;
+}
+
+.links a {
+	text-decoration: none;
+	color: #544f57;
+	font-size: 13px;
+}
+
+.links a:first-child {
+	margin-right: 50px;
+}
+
+.links a:hover {
+	text-decoration: underline;
+}
+
+

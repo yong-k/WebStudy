@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test022.html</title>
+<style type="text/css">
+	* { color: #223322; }
+	input {
+		font-family: 나눔고딕코딩;
+		font-weight: bold;	
+	}
+	input:focus { background-color: #eeeedd; }
+	input.btn { 
+		width: 90px; 
+		font-weight: bold;
+		font-family: 맑은고딕; 
+	}
+	input.btn:hover { color: orange; }
+	.txt {text-align: right;}
+	textarea {font-family: 나눔고딕코딩; font-weight: bold;}
+</style>
+<script type="text/javascript">
+	function addMember()
+	{
+		var str = "";
+		var arr = new Array();
+		var n = 0				//-- 인원수 몇 명인지 담을 변수
+		
+		do
+		{
+			// ※ 『prompt()』 대화창을 통해 데이터 입력 안내
+			//    입력받은 거 반환해줌
+			//    → 입력 데이터를 변수 str 에 담아내기
+			str = prompt("이름 전화번호(" + (n+1) + ") : ");
+			
+			if (str == null || str == "." || str == " " || str == "")
+				break;
+			
+			// '이름 전화번호' 형태로 배열요소 하나에 들어간다. 
+			arr[n] = str;
+			n++;
+			
+		} while (true);
+		
+		document.getElementById("txtCount").value = arr.length;
+		
+		for (var i = 0; i < arr.length; i++)
+			document.getElementById("txtResult").value += arr[i] + "\n";			
+	}
+</script>
+</head>
+<body>
+
+<!--
+	여러 명의 이름과 전화번호를 입력받고
+	그 내용을 전체 출력하는 페이지를 구성한다.
+	HTML, CSS, Javascript 를 활용한다.
+	
+	※ prompt() 활용.
+	입력받은 건 배열로 처리하고,
+	계속해서 사용자한테 입력받을 수 있도록 하려고 한다.
+	
+	페이지 레이아웃
+	-------------------------------------------------------
+	< 회원 정보 입력 >			→ 이 버튼밖에 없음 
+	
+	전체 회원 수 : [       ] 명
+	----------------------------
+	    이름		전화번호  
+	----------------------------
+				:
+				:
+				:  
+	----------------------------  
+	-------------------------------------------------------  
+-->
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<input type="button" value="회원 정보 입력" class="btn" style="width: 200px;" onclick="addMember()">
+		<br><br>
+		
+		전체 회원 수 <input type="text" id="txtCount" class="txt" readonly="readonly" style="width: 20px;"> 명
+		<br>
+		
+		<textarea rows="10" cols="30" id="txtResult" readonly="readonly" style="margin: 2px;"></textarea>	
+	</form>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

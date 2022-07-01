@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test027.html</title>
+<style type="text/css">
+	*{ 
+		font-family: 배달의민족 도현; 
+		background-color: #f9fae6;
+	}
+	div#wrapper{ 
+		font-size: 20px;
+	} 
+	div#box1{ 
+		width: 300;
+		display: flex;
+	}
+	#box1#content1{ width: 100; }
+	input#buyLotto{ 
+		width: 70px; 
+		margin: 0 30;
+	}
+	textarea{ font-family: 맑은고딕; }
+	.btn{ 
+		background-color: #b88d8d;
+		color: #292424;
+		border-radius: 15px;
+	}
+	.btn:hover{ background-color: #996b6b; }
+	.btn:active{ 
+		background-color: #735050;
+		color: white; 
+	}
+</style>
+<script type="text/javascript">
+	function actionLotto()
+	{
+		var lotto = new Array(6);
+		var count = parseInt(document.getElementById("buyLotto").value);
+		var result = "";
+		 
+		// 구매한 수 만큼 반복
+		for (var i = 0; i < count; i++)
+		{
+			// 로또 번호 생성 (중복 숫자 나오면 다시)
+			for (var j = 0; j < 6; j++)
+			{
+				lotto[j] = parseInt(Math.random() * 45) + 1;
+				
+				for (var k = 0; k < j; k++)
+				{
+					if (lotto[j] == lotto[k])
+					{
+						j -= 1;
+						break;
+					}
+				}
+			}
+			
+			// 정렬
+			for (var j = 0; j < lotto.length - 1; j++)
+			{
+				for (var k = j+1; k < lotto.length; k++)
+				{
+					if (lotto[j] > lotto[k])
+					{	
+						lotto[j] = lotto[j] ^ lotto[k];
+						lotto[k] = lotto[k] ^ lotto[j];
+						lotto[j] = lotto[j] ^ lotto[k];
+					}
+				}
+			}
+			
+			// 출력
+			for (var j = 0; j < lotto.length; j++)
+				result += lotto[j] + "  ";
+			result += "\n";
+		}
+		
+		document.getElementById("txtResult").value = result;
+	}
+</script>
+</head>
+<body>
+
+<!--  
+	★ 몇몇 회사의 코딩 테스트 였음 ★
+	
+	로또 번호(1~45)를 중복되지 않은 정수 6개를 생성하여
+	출력해주는 페이지를 구현한다.
+	HTML, CSS, Javascript 를 활용한다.
+	난수 발생 함수를 활용한다.
+	번호순으로 (오름차순) 정렬하여 출력할 수 있도록 한다.
+	주문한 장 수 만큼 출력할 수 있도록 한다.
+	
+	페이지 레이아웃
+	--------------------------------------------------------------
+	로또	[	3	] 장	< 주문하기 >
+				└ text			└ button
+				
+	결과
+	-----------------------	   ─ textarea
+	1   2   5   6   8  10
+	6  13  22  23  29  31
+	2   3  22  34  42  44 
+	-----------------------
+	--------------------------------------------------------------
+-->
+
+<div>
+	<h1>로또 번호 생성</h1>
+	<hr>
+</div>
+
+<div id="wrapper">
+	<div id="box1">
+		<div class="content" id="content1">Lotto</div>
+		<div class="content" id="content2">
+			<input type="text" id="buyLotto">
+		</div>
+		<div class="content" id="content3">
+			<input type="button" class="btn" value=" 주문하기 " onclick="actionLotto()">
+		</div>
+	</div>
+	<br>
+	Result<br>
+	<textarea rows="20" cols="40" id="txtResult" readonly="readonly"></textarea>
+</div>
+
+</body>
+</html>

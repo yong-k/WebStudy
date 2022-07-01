@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest04.html</title>
+<script type="text/javascript">
+
+	var myJsonObject4 =
+	{
+		"test" : function()
+		{
+			alert("Method Test~!!!");
+		}
+	}
+
+</script>
+</head>
+<body>
+
+	<input type="button" value="click1" onclick="myJsonObject4.test" />
+	<!-- └→ 안에 alert() 포함되어 있지만 버튼 클릭해도 아무것도 나오지 않는다. -->
+	
+	<input type="button" value="click2" onclick="alert(myJsonObject4.test)" />
+	<!--
+		function() 
+		{
+			alert("Method Test~!!!);
+		}
+		==> 함수 구성 문자열이 그대로 나온다.
+	 -->
+	 
+	 <br /><br />
+	 
+	 <!-- test 값으로 함수가 들어있으니 test() 로 해서 관찰해보자 -->
+	 <input type="button" value="click3" onclick="alert(myJsonObject4.test())" />
+	 <!-- click3 버튼 클릭했을 때 나오는 값 : Method Test~!!! 
+	      						확인 누르면   undefined        나옴
+	      									==> '정상적인 방법은 아니구나' 알 수 있다. -->
+	      									
+	<!-- 이 때 사용하는 것이 eval() -->
+	<!-- 『eval()』 : 변수를 자바스크립트의 함수처럼 사용할 수 있도록 해주는 함수 -->
+	<!-- 			  즉, 정적인 문자열을 동적인 코드 형식으로 처리 -->
+	<input type="button" value="click4" onclick="eval('a=' + myJsonObject4.test); a();" />	
+	<!-- click4 버튼 클릭했을 때 나오는 값 : Method Test~!!! -->
+	<!-- eval()함수 안에서, 『a=』 a라는 myJsonObject4.test 대입하라는 구문 작성했음
+		 myJsonObject4.test가 함수니까, a를 함수처럼 사용
+		 a(); → a라는 이름을 가진 함수를 호출해라      	 -->							
+	
+</body>
+</html>

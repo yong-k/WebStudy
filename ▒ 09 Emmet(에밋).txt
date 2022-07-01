@@ -1,0 +1,56 @@
+■■■ Emmet(에밋) ■■■
+
+○ 개요
+
+   - 기존에는 Zen Coding(젠코딩) 이라는 이름으로 사용되었다.
+   - 이후... Google 에서 이 도구를 수용하면서 emmet 이라는 이름으로 변경되었다.  
+   - HTML 생산성 향상 도구(HTML 코딩을 빠르게 하기 위한 플러그인)
+   - CSS 선택자 사용(CSS3 지원)
+     → HTML을 CSS 선택자를 통해 검색하는 방법 대신
+      	CSS 선택자를 통해 HTML을 생성하도록 하는 개념
+
+
+○ 환경 설정
+   - 대부분의 툴에서 지원하고 있음
+     (※ 그리고 대부분의 편집기 내에서 액션 키 : Ctrl + E)
+
+   - http://emmet.io
+     ① 메인 페이지 좌측에 있는 DOWNLOAD 버튼 클릭
+	→ https://emmet.io/download/ 페이지로 이동
+     ② DOWNLOAD 리스트들 중 『Eclipse/Aptana』 메뉴 클릭
+	→ https://github.com/emmetio/emmet-eclipse#readme 페이지로 이동
+     ③ Installation 항목대로 진행하면 된다.
+	1. Go to Help > Install New Software… in your Eclipse IDE
+	2. Add http://download.emmet.io/eclipse/updates/ in update sites
+	3. Check Emmet for Eclipse group in available plugins list, 
+ 	   click Next button and follow the installation instructions
+	   (진행 중에 경고 대화창 → Install anyway)
+	4. Software Updates 대화창
+	   - Restart Eclipse IDE to apply the software update?	   
+	     → Restart Now 버튼 클릭 → 이클립스 재시작
+     ④ Emmet 플러그인이 제대로 설치되고 이클립스가 정삭적으로 재구동 되었다면...
+        이클립스의 기본 메뉴에 Emmet 항목이 추가되었음을 확인할 수 있다.
+        (※ 단, emmet 에 익숙해지는 동안 이 메뉴를 사용할 일은 특별히 없음)
+
+     ※ 특이사항
+        Emmet 플러그인 설치 이후 이클립스 기본 단축키와 기능이 중복되는 항목이 존재한다.
+        → 충돌이 일어난다. (하필 많이 쓰는 단축키...!)
+   	   ┌ 이클립스 기본 단축키 (Ctrl + D : 한 줄 지우는거)
+	   └ Emmet(Ctrl + D : Match Pair Outward)
+	==> 단축키 재설정 해야 한다.
+            원래 Emmet 이 가지고 있는 Ctrl+D 는 어차피 안 쓰인다. 
+            window > preferences > (검색창)keys[단축키목록 쫙 뜬다]	
+            	> Binding 클릭(단축키의 알파벳 순서대로 정렬된다)
+		> ctrl+d 쪽으로 와서 delete Line 클릭하고
+		> Unbind Command 버튼 클릭 
+		> 그럼 Ctrl+D 2개 있던거 둘 다 빠진다. (Delete Line, Match Par Outward)
+		> 그리고 delete Line 눌러놓고 Binding 에 ctrl+d 입력
+		> apply > apply and close
+
+
+
+++) 추가 내 설정
+    window > preferences > emmet > common emmet preferences 에 
+	맨 우측에 『jsp, jspf』 추가해주기
+
+

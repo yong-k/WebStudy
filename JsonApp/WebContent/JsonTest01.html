@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest01.html</title>
+<script type="text/javascript">
+
+	//var myJsonObject = {"test" : "hello"}
+	//					------------------
+	// 				이런 형식 보면 Json 데이터 구조 생각하면 된다.
+	
+	var myJsonObject = 
+	{
+			"test" : "hello"
+	}
+	// → 이런 형태로도 많이 쓰인다.
+	// → 자바스크립트내에서 변수 선언했음
+	//    함수정의 구문처럼 보이지만, 
+	// 	  내부적으로는 var myJsonObject = {"test" : "hello"}
+	// 						└→ 객체
+
+</script>
+</head>
+<body>
+
+<form>
+	<input type="button" value="click1" onclick="alert(myJsonObject)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : [object Object] -->
+	
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : object -->
+</form>
+
+</body>
+</html>

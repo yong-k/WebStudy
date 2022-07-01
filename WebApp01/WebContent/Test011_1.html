@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test011_1.html</title>
+</head>
+<body>
+
+<div>
+	<h1>하이퍼링크 실습</h1>
+	<hr>
+</div>
+
+<div>
+	<!-- 정말 특별한 경우가 아니고서는 절대경로로 링크 걸지 말아라!! -->
+	
+	<!-- 보안설정상 아래 링크 열리지는 않는다. -->
+	<a href="D:\WebStudy\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\WebApp01\Test010.html">
+	절대경로 지정 방식</a>
+	<br><br>
+	
+	<!-- 내가 포함되어 있는 경로, 내가 존재하는 경로 → 『.』 
+		 현재 Test011_1.html 에서 찍은 『.』은 WebContent 폴더
+		 『/』 그거 타고 들어감
+		 내가 포함되어 있는 그 디렉터리 하위에 있는 
+		 『Test011.html』 로 이동하겠다.-->
+	<a href="./Test011.html">상대경로 지정 방식</a>
+	<br><br>
+<!-- ↑ 나라는 파일을 담고있는 디렉터리
+	    그 안에 담겨있는 Test011.html 파일
+	   
+	 ↓ Test011_1.html 과 같은 경로에 있는 Test011.html -->	
+	<a href="Test011.html">상대경로 지정 방식</a>
+	<br><br>
+	
+	<a href="http://localhost:8090/WebApp01/Test011.html">웹 상의 주소 지정 방식</a>
+	<!-- 			----------------------
+					여기까지가 나중에 실무에서는 
+					www.test.com 이런식으로 될 것이다.		
+					도메인이 없는 상태니까 지금은 주석처리 -->
+	<!-- <a href="http://www.test.com/Test011.html">웹 상의 주소 지정 방식</a> -->
+	<br><br>
+	
+	<a name="top">책갈피 위치</a>
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+		
+	<a href="#top">책갈피 위치로 이동하기</a>
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+</div>
+
+</body>
+</html>

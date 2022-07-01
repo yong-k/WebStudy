@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test025.html</title>
+<style type="text/css">
+	* { color: #223322; }
+	input {
+		font-family: 나눔고딕코딩;
+		font-weight: bold;	
+	}
+	input:focus { background-color: #eeeedd; }
+	.btn { 
+		width: 90px; 
+		font-family: 맑은고딕;
+		background-color: #000000;
+		color: white; 
+		border-radius: 15px;
+	}
+	.btn:hover { background-color: #544f4d; }
+	td { text-align: center; }
+	.txt { text-align: right; }
+	#calendarTbl { 
+		width: 250px;
+		border: none;
+	}
+</style>
+<script type="text/javascript">
+	
+	function addMember()
+	{
+		// 예전 달력 초기화
+		
+		
+		// 변수 값 가져오기
+		var year = Number(document.getElementById("txtYear").value);
+		var month = Number(document.getElementById("txtMonth").value);
+		
+		// 해당 달의 마지막 날짜 알아내기
+		var lastDate = new Date(year, month, 0).getDate();
+		//--→ month는 0부터 1월 시작되는데, 3번째 값으로 0을 주면 지난 달의 마지막 날짜를 넘겨준다.
+		
+		// 해당 달의 시작 요일 알아내기
+		var day = new Date(year, month-1, 1).getDay();
+	
+		// table 엘리먼트 접근
+		var tableNode = document.getElementById("calendarTbl");
+		
+		if (tableNode.childNodes[0].nodeType==1)
+			tbodyNode = tableNode.childNodes[0];
+		else
+			tbodyNode = tableNode.childNodes[1];
+		
+		// <tr><td> 엘리먼트 생성
+		var trNode = document.createElement("tr");
+		var tdNode, dayNode;
+		
+		// 시작 요일에 맞춰 공백 형성
+		if (day != 0)
+		{
+			for (var i = 0; i < day; i++)
+				trNode.appendChild(createTdNode(""));
+		}
+		
+		// 달력 그리기
+		for (var i = 1; i <= lastDate; i++, day++)
+		{
+			trNode.appendChild(createTdNode(i));
+			tableNode.appendChild(trNode);
+			
+			if (day == 6) {
+				trNode = document.createElement("tr");
+				day = -1;
+			}
+		}
+	}
+	
+	function createTdNode(val)
+	{
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");
+		tdNode.appendChild(textNode);
+		return tdNode;
+	}
+	
+	
+</script>
+</head>
+<body>
+
+<div>
+	<h1>테이블 동적 생성으로 만년달력 그리기</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<div id="container">
+			<input type="text" id="txtYear" class="txt" style="width: 67px;"> 년
+			<input type="text" id="txtMonth" class="txt" style="width: 67px;"> 월
+			<br><br>
+			
+			<button type="button" class="btn" style="width: 200px;" onclick="addMember();">만년달력 그리기</button>
+			<br><br>
+			
+			<table border="1" id="calendarTbl">
+				<tr>
+					<th>일</th>
+					<th>월</th>
+					<th>화</th>
+					<th>수</th>
+					<th>목</th>
+					<th>금</th>
+					<th>토</th>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

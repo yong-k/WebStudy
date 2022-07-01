@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 문서</title>
+<style type="text/css">
+	div{
+		width: 100px; height:100px;
+		position: relative;
+	}
+	
+	/* 2,3,4 div 애들은 각각 본인의 원래 위치에서 50, 100, 150 px 
+	   위로 올라와있는 상태이다. */
+	div:nth-child(1){ background-color: yellow; }
+	div:nth-child(2){ background-color: cyan; bottom: 50px;}
+	div:nth-child(3){ background-color: ivory; bottom: 100px; }
+	div:nth-child(4){
+		 background-color: mediumslateblue; bottom: 150px; }
+	.first{ z-index: 4; }
+	.second{ z-index: 3; }
+	.third{ z-index: 2; }
+	.fourth{ z-index: 1; }
+	/* z-index 같으면 나중에 생성된게 더 위에 쌓인다 */
+</style>
+</head>
+<body>
+	<div class="first">1</div>
+	<div class="second">2</div>
+	<div class="third">3</div>
+	<div class="fourth">4</div>
+</body>
+</html>

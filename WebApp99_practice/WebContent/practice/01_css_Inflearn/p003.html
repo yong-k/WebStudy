@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 문서</title>
+<style type="text/css">
+	.container{ 
+		display: flex;
+		width: 300px; height: 300px;
+		border: 2px solid black;
+		
+		/* justify-content: 주축에서의 요소들 간의 배치 방법을 결정한다. */
+		/* 주축 기준으로 애들이 가운데 정렬해있음
+		   애들 다닥다닥 붙어있음 */
+		/* justify-content: center; */
+		
+		/* flex container 앞쪽/뒤쪽에 애들 몰아보자 (앞/뒤 정렬) 
+		   애들 다닥다닥 붙어있음*/
+		/* justify-content: flex-start; */
+		/* justify-content: flex-end; */
+		
+		/* 요소들을 각자 균등한 자기만의 공간 갖게 하고 싶다. 
+		   주축에서 요소들 간의 여백을 동일하게 맞추겠다.*/
+		/* justify-content: space-around; */
+		
+		/* 첫번째 요소와 마지막 요소를 양 끝에 붙이고, 
+		   나머지 요소들 간의 사이사이 여백을 동일하게 맞추겠다. */
+		/* justify-content: space-between; */ 
+		
+		/* align-items: 교차축에서의 요소들 간의 배치 방법을 결정한다. */
+		/* 교차축에서의 제일 앞/끝에 요소 배치 */		
+		/* align-items: flex-start; */
+		/* align-items: flex-end; */
+		/* align-items: center; */
+		
+		/* 『nowrap』이 기본 상태 */
+		/* flex-wrap: nowrap; */
+		/* flex-wrap: wrap; */
+		/* → 주축으로 진행되던 flex 요소들의 도합 크기가 
+		      flex container 의 축 길이보다 커졌을 때,
+		      이것을 두 행 이상으로 처리할 수 있도록 하는 것 
+		      요소가 많아지면 3행도 4행도 될 수 있음*/
+		flex-wrap: wrap-reverse;
+		/* wrap 하기는 하는데, 반대방향으로 한다. */
+	}
+	.item{
+		/* width: 60px; height: 60px; */
+		/* flex container 보다 내용물이 더 커지면 어떻게 되는지 보기 위해서 */
+		width: 120px; height: 60px;
+		/* 컨테이너 가로 크기가 300이고, 내용물은 120*3개 니까 60px만큼이 
+		   삐져나가거나 누락될 거라 기대되지만,
+		   flex container 에서 자식요소가 자기의 크기보다 커지면,
+		   자식 요소를 줄여버린다/수축시킨다. 
+		   → 사이좋게 100px 씩 맞춰서 공간 갖게 되었다
+		   그런데, 나는 이런 형태 원하지 않는다.
+		   → 그럴 때, 『flex-wrap』 사용하면 된다. (.container에 추가)*/
+		
+		background-color: teal;
+	}
+	.self{
+		/* 개별요소 하나의 배치 결정 */
+		/* align-self: flex-end; */
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="item">1</div>
+		<div class="item self">2</div>
+		<div class="item">3</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest06.html</title>
+<script type="text/javascript">
+
+	// ①
+	/*
+	var myJsonObject6 = 
+	{
+		"test" : 123
+	}
+	*/
+	
+	// ②
+	/*
+	var myJsonObject6 = 
+	{
+		"test" : 123.456
+	}
+	*/
+	
+	/* 문자열로 된 거 string 으로 찍히는 건 앞에서 확인해봤으니 생략 */
+	
+	// ③
+	/*
+	var myJsonObject6 = 
+	{
+		"test" : true
+	}
+	*/
+	
+	// ④
+	var myJsonObject6 = 
+	{
+		"test" : null
+	}
+	/* JSON 에서는 Null, "null" 아니고 『null』 */ 
+	
+</script>
+</head>
+<body>
+
+	① <br />
+	<input type="button" value="click1" onclick="alert(myJsonObject6.test)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : 123 -->
+	
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject6.test)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : number -->
+	
+	<br /><br />
+	
+	② <br />
+	<input type="button" value="click1" onclick="alert(myJsonObject6.test)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : 123.456 -->
+	
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject6.test)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : number -->
+	
+	<br /><br />
+	
+	③ <br />
+	<input type="button" value="click1" onclick="alert(myJsonObject6.test)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : true -->
+	
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject6.test)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : boolean -->
+	
+	<br /><br />
+	
+	④ <br />
+	<input type="button" value="click1" onclick="alert(myJsonObject6.test)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : null -->
+	
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject6.test)" />
+	<!-- ★★★ check ★★★ -->
+	<!-- click2 버튼 클릭했을 때 나오는 값 : object -->
+	<!-- null 값 type 은 null 이 아니라 object로 나온다!! → 기억해두기!! -->
+	
+	<br /><br />
+	
+	<!-- 현재 null 이 담겨있고, type은 object인 상황 -->
+	<input type="button" value="click3" 
+	onclick="myJsonObject6.test=false; alert(myJsonObject6.test)" />
+	<!-- click3 버튼 클릭했을 때 나오는 값 : false -->
+	
+	<input type="button" value="click4" 
+	onclick="myJsonObject6.test=false; alert(typeof myJsonObject6.test)" />
+	<!-- click4 버튼 클릭했을 때 나오는 값 : boolean -->
+	
+	<input type="button" value="click5" 
+	onclick="myJsonObject6.test=123; alert(myJsonObject6.test)" />
+	<!-- click3 버튼 클릭했을 때 나오는 값 : 123 -->
+	
+	<input type="button" value="click6" 
+	onclick="myJsonObject6.test=123; alert(typeof myJsonObject6.test)" />
+	<!-- click4 버튼 클릭했을 때 나오는 값 : number -->
+	
+	<input type="button" value="click7" 
+	onclick="myJsonObject6.test='123'; alert(myJsonObject6.test)" />
+	<!-- click3 버튼 클릭했을 때 나오는 값 : 123 -->
+	
+	<input type="button" value="click8" 
+	onclick="myJsonObject6.test='123'; alert(typeof myJsonObject6.test)" />
+	<!-- click4 버튼 클릭했을 때 나오는 값 : string -->
+	
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest10.html</title>
+<style type="text/css">
+	body, div, span, table, th, td {
+		font-size: 12px;
+	}
+	#list {
+		border: 1px solid gray;
+		border-collapse: collapse;
+		width: 800px;
+	}
+	#list th {
+		width: 152px;
+	}
+	#list td {
+		width: 1662px;
+	}
+	#list th, #list td {
+		border: 1px solid gray;
+		padding: 3px;
+	}
+</style>
+<script type="text/javascript">
+	function add()
+	{
+		var item = document.getElementById("item").value;				// 제목
+		var week = parseInt(document.getElementById("week").value);		// 요일(0~3)
+		var start = parseInt(document.getElementById("start").value);	// 시작시간(1~8)
+		var end = parseInt(document.getElementById("end").value);		// 끝시간(1~8)
+		var color = document.getElementById("color").value;				// 색상
+		
+		var tds = document.getElementsByTagName("td");
+		
+		/*
+				(0) (1) (2)  (3)
+				월  화  수  목
+		11시(1)	 0   1   2   3  
+		12시(2)	 4   5   6   7  
+		13시(3)	 8   9  10  11
+		
+		테이블 인덱스 값은 +4 씩 커진다.
+		월요일(0)칸만 봤을 때, 시간 value값  * 4 를 하면 11시 * 4 = 4, 12시 * 4 = 8 
+		이런식으로 다음 줄 값이 나온다.
+		-> 그러므로 (시간-1)*4를 해주면 본인의 테이블 인덱스 값이 잘 나온다.
+		그 후에, 그 옆 요일들은 다 +1 씩 증가하고 있기 때문에, 요일 값을 더해주면 된다.
+		-> (시간-1)*4 + 요일
+		*/
+		
+		// 나
+		/*
+		for (var i = start; i <= end; i++)
+		{
+			tds[(i-1)*4+week].style.background = color;
+			tds[(i-1)*4+week].innerHTML = item;
+		}
+		*/
+		
+		//쌤
+		// ①
+		// 요일(td)이 4가지 이기 때문에 ... → * 4
+		/*
+		for (var i=(week + (start-1) * 4); i<=(week + (end-1) * 4); i+=4)
+		{
+			tds[i].style.backgroundColor = color;
+			tds[i].innerHTML = item;
+		}
+		*/
+		// ②
+		// 보통 요일은 0123 으로 하고, 시간은 1234~ 로 하고 하지 않으니까
+		// table에서 요일의 value값 변경해서 한다면, -> week 만 -1 해주면 됨
+		for (var i=((week-1) + (start-1) * 4); i<=((week-1) + (end-1) * 4); i+=4)
+		{
+			tds[i].style.backgroundColor = color;
+			tds[i].innerHTML = item;
+		}
+		
+	}
+</script>
+</head>
+<body>
+
+<h1>일정</h1>
+<hr />
+
+<table id="list">
+	<tr>
+		<th>&nbsp;</th>
+		<th>월</th>
+		<th>화</th>
+		<th>수</th>
+		<th>목</th>
+	</tr>
+	
+	<tr>
+		<th>11:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<th>12:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<th>13:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<th>14:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<th>15:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<th>16:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<th>17:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<th>18:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+
+</table>
+
+<div style="margin-top:20px;">
+	<label for="item">제목</label>
+	<input type="text" id="item" />
+	<br />
+	
+	<label for="week">날짜</label>
+	<select id="week">
+		<option value="0">월요일</option>
+		<option value="1">화요일</option>
+		<option value="2">수요일</option>
+		<option value="3">목요일</option>
+	</select>
+	<br />
+	
+	<label for="start">시간</label>
+	<select id="start">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	
+	<select id="end">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	<br />
+	
+	<label for="color">색상</label>
+	<select id="color">
+		<option value="#ff3300">빨강</option>
+		<option value="#ffff33">노랑</option>
+		<option value="#7799ff">파랑</option>
+		<option value="#808080">검정</option>
+	</select>
+	<br />
+	
+	<input type="button" value="일정 추가하기" style="margin-top:15px;" onclick="add()" />
+</div>
+
+</body>
+</html>

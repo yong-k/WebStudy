@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest03.html</title>
+<script type="text/javascript">
+
+	var myJsonObject3 = 
+	{
+		"test1" : "hello1"
+		, "test2" : "hello2"
+		, "test3" : "hello3"
+	}
+
+</script>
+</head>
+<body>
+
+	<!-- <input type="button" value="click1" onclick="myJsonObject3.test1" /> -->
+	<!-- └→ 버튼 클릭해도 아무것도 나오지 않는다. -->
+
+	<input type="button" value="click1" onclick="alert(myJsonObject3.test1)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : hello1 -->
+
+	<input type="button" value="click2" onclick="alert(myJsonObject3.test2)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : hello2 -->
+
+	<input type="button" value="click3" onclick="alert(myJsonObject3.test3)" />
+	<!-- click3 버튼 클릭했을 때 나오는 값 : hello3 -->
+
+	<br /><br />
+	
+	<input type="button" value="click4" onclick="alert(typeof myJsonObject3.test1)" />
+	<!-- click4 버튼 클릭했을 때 나오는 값 : string -->
+
+	<input type="button" value="click5" onclick="alert(typeof myJsonObject3.test2)" />
+	<!-- click5 버튼 클릭했을 때 나오는 값 : string -->
+
+	<input type="button" value="click6" onclick="alert(typeof myJsonObject3.test3)" />
+	<!-- click6 버튼 클릭했을 때 나오는 값 : string -->
+	
+	<!-- javascript 에서 string 은 String 아니라 string으로 다 소문자로 되어있음 --> 
+</body>
+</html>

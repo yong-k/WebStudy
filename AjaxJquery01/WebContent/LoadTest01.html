@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LoadTest01.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	// ※ 『$(선택자).load("로드를 원하는 html 문서의 위치와 이름");』
+	//    - jQuery 의 기능이 수행되는 과정에서 다른 html 문서를 로드
+	//    - HTML 을 읽어들여서 DOM 에 삽입하는 기능을 수행
+
+	$(document).ready(function()
+	{
+		// #btn 안의 .btnLoad 를 click 하면 기능/동작하게 하겠다.
+		$("#btn .btnLoad").click(function()
+		{
+			// 테스트
+			//alert("확인");
+			
+			// 우리 처음 AjaxTest01.html 에서 텍스트 읽어오던 실습이랑 같은건데
+			// jQuery 사용해서 더 간단하게 가져오는 것!
+			$("#ctlGrid").load("LoadTest02.html");
+			//-- 『비동기』 방식으로 페이지 로드
+			//-- 따로 ajax 객체 생성하는 코드, readyState, status, callBack()
+			//   다 필요없이 이렇게 가능하다.
+			
+			// LoadTest02 를 읽어오라는 것보다 나중에 코딩되어 있다.
+			window.alert("여기 작성한 메세지가 먼저 출력된다. 이유는 비동기");
+			//-- 이 메세지 박스가 먼저 출력~!!!
+			//-- 그런데 실행해보면, alert 먼저 나오고 LoadTest02 로드해온다. 
+			//   ==> 비동기이기 때문에!!
+		});
+	});
+
+</script>
+</head>
+<body>
+
+<div>
+	<h1>jQuery의 load() 활용 실습</h1>
+	<hr />
+</div>
+
+<div>
+	<div id="btn">
+		<div class="btnLoad">HTML 읽어오기 버튼</div>
+	</div>
+	<br />
+	
+	<div id="ctlGrid">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</body>
+</html>

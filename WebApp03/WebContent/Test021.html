@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test021.html</title>
+
+<style type="text/css">
+</style>
+
+<script type="text/javascript">
+
+	function actionResult()
+	{
+		var str = document.getElementById("inputTxt").value;
+		var arr = str.split(" ");
+		
+		// 숫자로 안바꿔줘서
+		// 21 86 285 43 7
+		// 넣으면 '86' 이 '285' 보다 문자로 크니까 86이 제일 크다고 나왔었음,,,,
+		for (var i = 0; i < arr.length; i++)
+			arr[i] = parseInt(arr[i]);
+		
+		var result = "[ ";
+		
+		var max = arr[0];
+		for (var i = 0; i < arr.length; i++)
+		{
+			result += arr[i] + " ";
+			
+			if (max < arr[i])
+				max = arr[i];
+		}
+		result += "]";
+		document.getElementById("resultArr").value = result;
+		document.getElementById("max").value = max;
+	}
+	
+
+</script>
+
+</head>
+<body>
+
+<!--  
+	사용자로부터 임의의 정수를 임의의 개수만큼 입력받고,
+	그 내용으로 배열을 구성하여
+	구성한 정수들 중 가장 큰 수를 출력해 줄 수 있는 페이지를 구현한다.
+	HTML, CSS, Javascript 활용
+	
+	
+	페이지 레이아웃
+	-------------------------------------------------------------------
+	데이터 입력(공백 구분)  [  21 86 285 43 7	]
+	
+				< 결과 확인 >
+				
+	- 전체 출력 [ 21 86 285 43 7 ]
+	- 가장 큰 수	[  285  ]				
+	-------------------------------------------------------------------
+-->
+
+<div>
+	<h1>배열 실습</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<div>
+			데이터 입력(공백 구분)
+			<input type="text" id="inputTxt" class="txt">
+		</div>
+		<br>
+		<div>
+			<input type="button" value=" 결과 확인 " onclick="actionResult()">
+		</div>
+		<br>
+		<div>
+			- 전체 출력 
+			<input type="text" id="resultArr" class="txt"><br>
+			- 가장 큰 수
+			<input type="text" id="max" class="txt"><br>
+		</div>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/GoogleVisionApi/src/api/GoogleVisionApiTester.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="GOOGLE_APPLICATION_CREDENTIALS" value="D:\WebStudy\GoogleVisionApi\receipt-349305-e7170ff34ae8.json"/>
+</mapAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="api.GoogleVisionApiTester"/>
+<stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="GoogleVisionApi"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="GoogleVisionApi"/>
+</launchConfiguration>

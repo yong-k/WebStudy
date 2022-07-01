@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test018.html</title>
+</head>
+<body>
+
+<div>
+	<h1>여러 줄 데이터 입력 글상자</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<!-- 다른 입력 컨트롤들은 input type으로 제어하는데
+			 얘는 태그 이름 자체가 input type 이 아니라
+			 <textarea> 이다. 
+			 제공하는 화면보다 더 많은 데이터 입력하면, 옆에 스크롤 생긴다. -->
+		<textarea rows="10" cols="50">많은 내용을 기재할 수 있는 엘리멘트로
+태그 사이의 공백문자 인식
+		엔터키 입력을 통한 개행 처리</textarea>
+	</form>
+</div>
+
+<div>
+	<form>
+		<!-- 안에 내용물이 보이게끔 구성 하려면, 
+			 <input type> 에서는 value라는 속성 이용해서 구성했었다.
+			 그런데 <textarea>는 value 속성이 없다. 
+			 그냥 <textarea></textarea> 사이에 내용 적으면 된다. -->
+		<input type="text" value="입력 내용">
+	</form>
+</div>
+
+</body>
+</html>

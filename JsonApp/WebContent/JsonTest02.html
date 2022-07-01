@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest02.html</title>
+<script type="text/javascript">
+
+	var myJsonObject2 = 
+	{
+			"test" : "hello"
+			/* "test" : "new test */"
+			/* 아래 부분에서 
+			   myJsonObject2.test='new test'
+			   한거랑 똑같은 의미이다. */
+	}
+	// → 이런 형태로도 많이 쓰인다.
+	// → 자바스크립트내에서 변수 선언했음
+	//    함수정의 구문처럼 보이지만, 
+	// 	  내부적으로는 var myJsonObject2 = {"test" : "hello"}
+	// 						└→ 객체
+
+</script>
+</head>
+<body>
+
+<form>
+	<input type="button" value="click1" onclick="alert(myJsonObject2.test)" />
+	<!-- click1 버튼 클릭했을 때 나오는 값 : hello -->
+	
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject2.test)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : string -->
+
+	<!-- 											 ┌→ 값 갱신 			   -->
+	<!-- 						 				------------------------------ -->
+	<input type="button" value="click3" onclick="myJsonObject2.test='new test'; alert(myJsonObject2.test)" />
+	<!-- click2 버튼 클릭했을 때 나오는 값 : new test -->
+</form>
+
+</body>
+</html>

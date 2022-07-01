@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test032.html</title>
+
+<style type="text/css">
+	* { color: #223322; font-family: 맑은 고딕; font-weight: bold; }
+	.btn { font-size: 17px; }
+	.btn:hover { color: orange; font-weight: bold; }
+	.txt { width: 220px; }
+</style>
+ 
+<script type="text/javascript">
+	function searchAddr()
+	{
+		// 확인
+		//alert("함수 호출 확인~!!!");
+		
+		// window : BOM 의 가장 기본적인 객체, 가장 핵심적인 객체
+		// window.open(페이지주소, 페이지정체성, 페이지속성);
+		window.open("Test033.html", "test", "width=500, height=300");
+		
+		// 아직 서버단 배우지 않아서, DB 연동도 하지 않아서
+		// 서교로로 그냥 고정값 넣어놓은거고
+		// 나중에 다 배우면, 주소 검색하면 거기에 해당되는 주소 쭉 나오게 하면 된다.
+		
+		// Test033.html 열리는 창에서 주소 선택하면, 
+		// 창 자동으로 닫히고, 기본주소에 해당주소 입력된 후에, 상세주소로 포커스 넘어가는게 default
+		// Test033.html 가서 처리하자
+	}
+</script>
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>주소 검색</h2>
+	
+	<form>
+		<!-- 보통 그렇듯, 기본 주소 사용자가 입력 못하게 해놓고, 검색하게 해놓음 
+			 검색버튼 클릭하면, 주소 검색하는 스크립트 함수 호출되게 처리 
+			 → Test033.html 이 열리게 만들거임 -->
+		기본 주소
+		<input type="text" id="addr1" readonly="readonly" class="txt">
+		<input type="button" value="검색" class="btn" onclick="searchAddr()">
+		<br><br>
+		
+		상세 주소
+		<input type="text" id="addr2" class="txt">
+		<br><br>
+		
+		<!-- 혹시 바인딩해야 할 수 있어서 Test032에 span 태그 만들어놓음 -->
+		<!-- 여기에도 Test033.html이 값을 넘길 수 있다 -->
+		<span id="txt1" style="color: red; font-weight: bold;">눈으로 확인할 수 있도록 처리</span>
+	</form>
+</div>
+
+</body>
+</html>

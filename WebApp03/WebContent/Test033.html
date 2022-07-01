@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test033.html</title>
+
+<style type="text/css">
+	a { font-size: small; }
+</style>
+<script type="text/javascript">
+	function myAddr(addr)
+	{	
+		// 확인
+		//alert("함수 호출 확인~!!!");
+		
+		// 확인
+		//alert(addr);
+		
+		//-- 이제 어떤 게 함수 호출했는지 식별 가능한 상태
+		//   그걸 Test032.html 의 
+		//   <input type="text" id="addr1" readonly="readonly" class="txt"> 에 넘겨주면 된다.
+		
+		// 아래와 같이 하면 안 된다. Test033에는 id = addr1 인게 없어서
+		// 『document.』 하면 Test033.html 현재 이 문서를 말하니까
+		//document.getElementById("addr1").value = "1234";
+		
+		// 『window.opener』 → Test033.html 를 open 한 애를 말함
+		// 『window.opener.document』 → Test032.html 를 말함
+		//window.opener.document.getElementById("addr1").value = "1234"
+		//--> Test032 에서 검색 클릭해서 주소 누르면 
+		//    기본주소에 "1234" 넘어가는 거 확인된다.
+		// 그럼 "1234" 대신에 addr 넘겨주면 된다.
+		window.opener.document.getElementById("addr1").value = addr;
+		
+		// Test032.html 에 있는 <span> 태그에도 값 넘길 수 있다.
+		// ※ 이때는 『.value』 가 아니라 『.innerHTML』 이다 !!
+		//    <span></span>처럼 양 옆 태그 안에 글자 넣을 때 → 『.innerHTML』
+		//    input 엘리먼트에 넣을 때는 					 → 『.value』
+		// CR, FF 용
+		window.opener.document.getElementById("txt1").innerHTML = addr;
+		//-- 이건 브라우저를 타서 crome, firefox에서 쓸 수 있는 거고
+		//   혹시 IE 쓰면 『.innerText』 사용해서 넘겨줘야 한다.
+		// IE 용
+		//window.opener.document.getElementById("txt1").innerText = addr;
+		
+		// 이제 주소 선택해서 값 넘겨줬으면, Test033.html 창 닫히고
+		// Test032.html로 제어권 넘어가야 함
+		// opener : Test032.html
+		// window : Test033.html
+		window.close();
+		
+	}
+</script>
+
+</head>
+<body>
+
+<div>
+	<form>
+		주소 검색
+		<!-- 그냥 input 만 써도 input[type=text]로 들어간다. -->
+		<input>
+		<input type="button" value="검색"><br><br>
+		
+		<!-- a 태그는 링크 거는 앵커태그이기 때문에, a 태그에 click 이벤트 넣지 않는다. 
+		 	 → 이거는 쌤한테 다시 물어보니까 ⅩⅩ
+		 	    UX(User eXperience)를 해치는 UI(User Interface)는 좋지 않다는 얘기였다. -->
+		<!-- 아래와 같이 Test032.html로 주소 직접 지정해서 넣어보자 -->
+		<!-- <a href="Test032.html">서울 마포구 서교로 1가 (1~110번지)</a><br> -->
+		<!-- → 창 뜨는 Test033.html 페이지가 닫히고 Test032.html 로 가는게 아니라
+		        그냥 Test033.html 페이지에서 Test032.html이 열린다.. 
+		     → 보통 스크립트 단에서 처리함 --> 
+		     
+		<!-- <a> 태그에서 자바스크립트 함수 부르려면 어떻게 할까?
+			 일단 a 자체에 함수 호출 넣어보면 → 404 에러뜬다. -->
+		<!-- <a href="myAddr()">서울 마포구 서교로 1가 (1~110번지)</a><br> --> 
+		
+		<!-- <a> 태그에서 자바스크립트 함수 부르려면 어떻게 할까??
+		     접두어로 『javascript:』 들어가면 된다. 
+		     함수 호출할 때 어느 <a> 태그가 호출했는지도 문자타입으로 매개변수로 넘겨주자 -->
+		<a href="javascript:myAddr('04044 서울 마포구 서교로 1가')">서울 마포구 서교로 1가 (1~110번지)</a><br> 
+		<a href="javascript:myAddr('04045 서울 마포구 서교로 2가')">서울 마포구 서교로 2가 (111~123번지)</a><br> 
+		<a href="javascript:myAddr('04046 서울 마포구 서교로 3가')">서울 마포구 서교로 3가 (124~131번지)</a><br> 
+		<a href="javascript:myAddr('04047 서울 마포구 서교로 4가')">서울 마포구 서교로 4가 (132~184번지)</a><br> 
+		<a href="javascript:myAddr('04048 서울 마포구 서교로 5가')">서울 마포구 서교로 5가 (185~192번지)</a><br> 
+		<a href="javascript:myAddr('04049 서울 마포구 서교로 6가')">서울 마포구 서교로 6가 (193~215번지)</a><br> 
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+■■■ JDBC 연동 게시판 작성 실습 ■■■
+
+○ 프로젝트 : WebApp20
+
+○ 물리적 구성 요소
+   
+   00. WebApp20_scott.sql
+   
+   01. DBConn.java
+   02. BoardDTO.java
+   03. BoardDAO.java
+   04. ★ MyUtil.java		→ 페이징처리 (쌤이 즉흥적으로 생각하는것만 해도 30개)
+   							   지금은 쉬운걸로 하고 나중에 더 생각해보기
+   							   여러코드 이해할 수 있게 해야된다.
+   							→ com.util package에 만듦
+   
+   05. List.jsp			→ 목록 작성
+   06. Created.jsp		→ 게시물 작성
+   07. Created_ok.jsp	→ 게시물 작성 액션 처리
+   08. Article.jsp		→ 상세 내용 보여줌
+   	  					   (번호 넘겨주고, 수정 다 했을 때, 원래페이지에 있게하고 싶으면
+   	  					   	페이지번호도 넘겨주면 된다.)
+   09. Updated.jsp		→ 생성하는 폼 구성하는
+   10. Updated_ok.jsp	→ 생성 액션 처리 (패스워드 확인 후 수정)
+   11. Delete_ok.jsp	→ 삭제 액션 처리 (패스워드 확인 후 삭제)
+   
+   Article.jsp에서
+   수정 → Updated.jsp → 확인 → Updated_ok.jsp → List.jsp
+   삭제 → Updated.jsp → Delete_ok.jsp → List.jsp
+   	       (패스워드만
+   	        입력할 수 있도록 → 나머지칸은 다 disabled 시켜놓고) 
+   	        & 기존 데이터와 비교
+   	        
+   그럼 Updated.jsp에서는 수정버튼에 의해서 넘어온건지, 삭제버튼에서 넘어온건지 알아야 한다.
+   삭제버튼에 의해서 넘어온거면, 패스워드 빼고 나머지 다 비활시킬 것이다.
+   그리고 수정으로 넘어오면 [수정하기]버튼, 삭제로 넘어오면 [삭제하기]버튼
+   

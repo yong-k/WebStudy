@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test030_teacher.html</title>
+<style type="text/css">
+	* { color: #223322; }
+	input { font-family: 나눔고딕코딩; font-weight: bold; }
+	input:focus { background: #eeeedd; }
+	.btn { font-weight: bold; font-family: 맑은 고딕; }
+	.btn:hover { color: orange; }
+	.txt { text-align: center; font-weight: bold; }
+	#resultArea { font-family: 맑은 고딕; font-weight: bold; }
+	#txtCount { width: 20px; }
+</style>
+
+<script type="text/javascript">
+	
+	// countSet(), actionChoice() 둘 다 필요한 변수는 → 전역변수로 선언
+	var cnt = 0;		//-- 선택할 수 있는 아이스크림의 개수
+	var userCnt = 0;	//-- 사용자가 선택한 아이스크림의 개수
+	
+	function countSet(val)
+	{
+		// 확인 
+		//alert(val);
+		
+		// 매개변수로 넘겨받은 데이터를 이용하여
+		// 선택할 수 있는 아이스크림의 개수 설정
+		cnt = parseInt(val);
+		
+		alert("당신이 선택할 수 있는 아이스크림 개수는 『" + cnt + "개』 입니다.")
+	}
+	
+	function actionChoice(obj)
+	{
+		//alert(obj);
+		//--==>> [object HTMLInputElement]
+		//alert(obj.checked);
+		//-- 체크 설정되며 클릭된 상황 vs 체크 해제되며 클릭된 상황 → 판단 가능
+		//--==>> 체크 설정하면서 클릭하면 true, 해제하면서 클릭하면 false
+		
+		
+		if (obj.checked)	// obj가 체크설정되면서 클릭되었다면
+		{
+			if (userCnt >= cnt)
+			{
+				alert("선택할 수 있는 개수를 초과하였습니다.");
+				obj.checked = false;		// check~!!!
+				return;
+			}
+			
+			// 사용자가 선택한 개수 증가
+			userCnt++;
+		}
+		else 
+		{
+			// 사용자가 선택한 개수 감소
+			userCnt--;
+		}
+		
+		// 확인
+		//alert(cnt + "개 중 " + userCnt + "개 선택");
+	}
+	
+</script>
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+<!-- 
+	사이즈 먼저 선택 → 아이스크림 고르기
+	사이즈만큼의 아이스크림 개수 고르기 전까지는 아무 반응 없지만,
+	개수 초과하면 경고창뜨고, 선택 안되게
+	
+	패밀리 버튼 누르고
+	패밀리 5개 선택가능하니까 5개까지 선택해도 아무 반응 없지만,
+	6개째 누르면 → 경고창 뜨면서 
+	'너가 선택한 걸로는 5개밖에 못 담는다' 이런식으로 뜨면서 선택 안되게 하면 된다 
+	
+	버튼이 따로 없음 → 라디오버튼 하나하나에 걸려있어야 한다.
+-->
+
+
+<div>
+	<h2>아이스크림 주문</h2>
+	
+	<form>
+		--- 사이즈 선택 --- <br><br>
+		
+		<!-- countSet(this.value) 랑 어차피 value 1이니까 countSet(1)이나 똑같은 거 -->
+		<input type="radio" name="radioGroup" id="a1" value="1" onclick="countSet(1)">
+		<label for="a1">싱글(1)</label>
+		<input type="radio" name="radioGroup" id="b1" value="2" onclick="countSet(2)">
+		<label for="b1">더블(2)</label>
+		<input type="radio" name="radioGroup" id="c1" value="3" onclick="countSet(3)">
+		<label for="c1">파인트(3)</label>
+		<input type="radio" name="radioGroup" id="d1" value="4" onclick="countSet(4)">
+		<label for="d1">쿼터(4)</label>
+		<input type="radio" name="radioGroup" id="e1" value="5" onclick="countSet(5)">
+		<label for="e1">패밀리(5)</label>
+		<input type="radio" name="radioGroup" id="f1" value="6" onclick="countSet(6)">
+		<label for="f1">하프갤런(6)</label>
+		<br><br>
+		
+		--- 종류 선택 --- <br><br>
+		
+		<!-- this 를 보내면, 필요하면, id, value 다 얻어낼 수 있다. -->
+		<input type="checkbox" name="checkGroup" id="a2" value="엄마" onclick="actionChoice(this)">
+		<label for="a2">엄마는외계인</label>
+		<input type="checkbox" name="checkGroup" id="b2" value="레인" onclick="actionChoice(this)">
+		<label for="b2">레인보우샤베트</label>
+		<input type="checkbox" name="checkGroup" id="c2" value="민트" onclick="actionChoice(this)">
+		<label for="c2">민트초코</label>
+		<input type="checkbox" name="checkGroup" id="d2" value="바람" onclick="actionChoice(this)">
+		<label for="d2">바람과함께사라지다</label>
+		<br>
+		
+		<input type="checkbox" name="checkGroup" id="e2" value="뉴욕" onclick="actionChoice(this)">
+		<label for="e2">뉴욕치즈케이크</label>
+		<input type="checkbox" name="checkGroup" id="f2" value="사랑" onclick="actionChoice(this)">
+		<label for="f2">사랑에빠진딸기</label>
+		<input type="checkbox" name="checkGroup" id="g2" value="초코" onclick="actionChoice(this)">
+		<label for="g2">초코나무숲</label>
+		<input type="checkbox" name="checkGroup" id="h2" value="봉봉" onclick="actionChoice(this)">
+		<label for="h2">아몬드봉봉</label>
+		<br>
+		
+		<input type="checkbox" name="checkGroup" id="i2" value="바닐" onclick="actionChoice(this)">
+		<label for="i2">바닐라</label>
+		<input type="checkbox" name="checkGroup" id="j2" value="쿠키" onclick="actionChoice(this)">
+		<label for="j2">쿠키앤크림</label>
+		<input type="checkbox" name="checkGroup" id="k2" value="월넛" onclick="actionChoice(this)">
+		<label for="k2">월넛</label>
+		<input type="checkbox" name="checkGroup" id="l2" value="요거" onclick="actionChoice(this)">
+		<label for="l2">31요거트</label>
+		
+		<br><br>
+		<input type="reset" value="전체취소">
+	</form>
+</div>
+
+</body>
+</html>

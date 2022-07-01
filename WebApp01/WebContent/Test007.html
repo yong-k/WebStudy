@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test007.html</title>
+</head>
+<body>
+
+<div>
+	<h1>수평선 넣기 / 공백 넣기</h1>
+	<hr>
+</div>
+
+<div>
+	수평선을 사용해보자<br>
+	hr : horizontal Line<br>
+	div 도 그렇고, br 도 그렇고 block 단위 태그라서 별도로 br로 개행안해줘도<br>
+	한 블럭을 다 잡아먹게 랜더링되는 태그들이다.
+	<hr size="20" color="red">
+	<!-- 이렇게 여기서 size랑 color 지정하는 것도 바람직하지 않은 거 -->
+	<br><br>
+	
+	음영선이 없는 수평선
+	<hr size="20" noshade="noshade">
+	<br><br>
+	
+	<!-- size  : 수평선의 두께
+		 width : 수평선의 길이 
+	     align : 정렬-->
+	수평선의 수평 길이 설정 → width 속성 	
+	<hr size="5" width="400" align="right">
+	<hr size="5" width="200" aligh="right">
+	<br><br>
+	
+	수평선의 정렬
+	<!-- width에 50%로 지정해주면 전체 화면의 50% 정도의 길이 갖는다. -->
+	<hr size="5" width="50%" align="left">
+	<hr size="7" width="50%" align="right">
+	<hr size="9" width="50%" align="center">
+	<hr size="5" width="50%">
+	<!-- 수평선은 align 지정안해주면 가운데 정렬된다. -->
+</div>
+
+<div>
+	공백 발생<br>
+	<!-- 공백과 공백 사이에 공백 많~~이 만들어놨는데 
+	     웹 페이지 열어보면 한 칸만 띄어쓰기 되어 있다. -->
+	공백                                   공백<br><br>
+	
+	<!-- 공백 여러칸 처리하려면, 공백으로 약속된 키워드 사용해야 한다.
+	   	 공백 키워드 : 『&nbsp;』 -->
+	공백 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 공백
+</div>
+
+<!-- check~!!! -->
+<!-- 대표적인 '쓰지 말아라~!!!' 태그 -->
+<div>
+	<font size="1">F강의장 식구들 화이팅</font><br>
+	<font size="2">F강의장 식구들 화이팅</font><br>
+	<font size="3">F강의장 식구들 화이팅</font><br>
+	<font size="4">F강의장 식구들 화이팅</font><br>
+	<font size="5">F강의장 식구들 화이팅</font><br>
+	<font size="6">F강의장 식구들 화이팅</font><br>
+	<font size="7">F강의장 식구들 화이팅</font><br>
+	<!-- size 8, 9, 10은 의미없다. size 7 과 크기 동일 
+	  	 그럼에도 불구하고 html은 에러 안남 ㅎvㅎ -->
+	<font size="8">F강의장 식구들 화이팅</font><br>		<!-- check~!!! -->
+	<font size="9">F강의장 식구들 화이팅</font><br>		<!-- check~!!! -->
+	<font size="10">F강의장 식구들 화이팅</font><br>	<!-- check~!!! -->
+	
+	<!-- 100% html에서 쓸 태그가 아니라, CSS로 꾸미기 할 때 써야하는 거다. -->
+	<font size="4" color="green">F강의장 식구들 화이팅</font><br>
+	<font size="4" color="#00ff00">F강의장 식구들 화이팅</font><br>
+	<font size="4" color="red" face="궁서체">F강의장 식구들 화이팅</font><br>
+</div>
+
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+</body>
+</html>
